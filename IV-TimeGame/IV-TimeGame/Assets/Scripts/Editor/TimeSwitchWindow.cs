@@ -28,6 +28,12 @@ public class TimeSwitchWindow : EditorWindow
         EditorApplication.playModeStateChanged += modeChange;
     }
 
+    //Make sure the Editor is up to date, even when not focused
+    public void OnInspectorUpdate()
+    {
+        Repaint();
+    }
+
     void OnGUI()
     {
         //Set / Show currently Visibly Time
