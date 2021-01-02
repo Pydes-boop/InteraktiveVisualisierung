@@ -3,12 +3,15 @@
  * 
  * This is a Editor Window ment to aid the Level Designer
  * It Allows to filter the Scene view by timeframe
- */ 
+ * 
+ *     //TODO: Maybe add a time script, instead of only working with layers
+ */
 
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
+[InitializeOnLoadAttribute]
 public class TimeSwitchWindow : EditorWindow
 {
     enum DisplayState { Past, Present, Both};
@@ -20,8 +23,14 @@ public class TimeSwitchWindow : EditorWindow
         GetWindow<TimeSwitchWindow>("Time Switch");
     }
 
+    static TimeSwitchWindow()
+    {
+        EditorApplication.playModeStateChanged += modeChange;
+    }
+
     void OnGUI()
     {
+        //Set / Show currently Visibly Time
         GUILayout.Label("Current Point In Time:", EditorStyles.boldLabel);
 
         DisplayState last = displayState;
@@ -29,16 +38,10 @@ public class TimeSwitchWindow : EditorWindow
 
         if (last != displayState)
         {
-            //TODO: narrow it down for performance, maybe use some timeobject script
-            List<GameObject> all = GetAllObjectsOnlyInScene();
-
-            foreach (GameObject g in all)
-            {
-                bool visible = getVisibility(g);
-                setVisibility(g, visible);
-            }
+            setVisibilityForAll();
         }
 
+        //Show current Objects Time
         GUILayout.Label("Selected Object Is In:", EditorStyles.boldLabel);
         GameObject seledctedSingle = Selection.activeGameObject;
         if (seledctedSingle != null)
@@ -46,6 +49,8 @@ public class TimeSwitchWindow : EditorWindow
         else
             GUILayout.Label("\t No object selected");
 
+
+        //Move selected obejcts to time
         GUILayout.Label("Move Selected Objects To:", EditorStyles.boldLabel);
 
         EditorGUILayout.BeginHorizontal();
@@ -71,6 +76,40 @@ public class TimeSwitchWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
     }
 
+    //Do not interfere with play mode. Refernce: https://docs.unity3d.com/ScriptReference/EditorApplication-playModeStateChanged.html?_ga=2.220954776.1461951138.1609432168-1702603845.1548164925
+    public static void modeChange(PlayModeStateChange state)
+    {
+        if(state == PlayModeStateChange.EnteredPlayMode)
+        {
+            setAllVisible();
+        }
+        else if(state == PlayModeStateChange.EnteredEditMode)
+        {
+            TimeSwitchWindow switcher = Object.FindObjectOfType<TimeSwitchWindow>();
+            switcher?.setVisibilityForAll();
+        }
+    }
+
+    void setVisibilityForAll()
+    {
+        //TODO: narrow it down for performance, maybe use some timeobject script
+        List<GameObject> all = GetAllObjectsOnlyInScene();
+
+        foreach (GameObject g in all)
+        {
+            bool visible = getVisibility(g);
+            setVisibility(g, visible);
+        }
+    }
+
+    static void setAllVisible()
+    {
+        foreach(GameObject g in GetAllObjectsOnlyInScene())
+        {
+            setVisibility(g, true);//TODO: maybe there are some objects, that should be disabled? (by the Level Designer)
+        }
+    }
+
     bool getVisibility(GameObject g)
     {
         bool visible = 
@@ -80,22 +119,19 @@ public class TimeSwitchWindow : EditorWindow
         return visible;
     }
 
-    void setVisibility(GameObject go, bool visible)
+    static void setVisibility(GameObject go, bool visible)
     {
         go.SetActive(visible);
     }
 
-    //TODO: Maybe add a time script, instead of only working with layers
-    //TODO: Set all to active on game Start()
-
-    DisplayState getTime(GameObject go)
+    static DisplayState getTime(GameObject go)
     {
         if (go.layer == 9) return DisplayState.Past;
         else if (go.layer == 10) return DisplayState.Present;
         else return DisplayState.Both;
     }
 
-    void setTime(GameObject go, DisplayState time)
+    static void setTime(GameObject go, DisplayState time)
     {
         switch(time)
         {
@@ -115,7 +151,7 @@ public class TimeSwitchWindow : EditorWindow
     }
 
     //Taken straight from the Unity Documentation: https://docs.unity3d.com/ScriptReference/Resources.FindObjectsOfTypeAll.html
-    List<GameObject> GetAllObjectsOnlyInScene()
+    static List<GameObject> GetAllObjectsOnlyInScene()
     {
         List<GameObject> objectsInScene = new List<GameObject>();
 
