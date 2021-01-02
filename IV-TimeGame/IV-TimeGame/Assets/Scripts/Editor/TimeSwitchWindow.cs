@@ -47,6 +47,21 @@ public class TimeSwitchWindow : EditorWindow
             setVisibilityForAll();
         }
 
+        //Select All Objects in Time
+        if(GUILayout.Button("Select All In This Time"))
+        {
+            List<GameObject> all = GetAllObjectsOnlyInScene();
+            List<GameObject> currentTime = new List<GameObject>();
+
+            foreach(GameObject g in all)
+            {
+                if (getTime(g) == displayState)
+                    currentTime.Add(g);
+            }
+
+            Selection.objects = currentTime.ToArray();
+        }
+
         //Show current Objects Time
         GUILayout.Label("Selected Object Is In:", EditorStyles.boldLabel);
         GameObject seledctedSingle = Selection.activeGameObject;
@@ -95,6 +110,9 @@ public class TimeSwitchWindow : EditorWindow
             switcher?.setVisibilityForAll();
         }
     }
+
+    //NOTE: Might want to change this once the time travell machanic is in place
+    #region SetAndGetTimeStuff
 
     void setVisibilityForAll()
     {
@@ -155,6 +173,8 @@ public class TimeSwitchWindow : EditorWindow
                 break;
         }
     }
+
+    #endregion
 
     //Taken straight from the Unity Documentation: https://docs.unity3d.com/ScriptReference/Resources.FindObjectsOfTypeAll.html
     static List<GameObject> GetAllObjectsOnlyInScene()
