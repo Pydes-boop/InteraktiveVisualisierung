@@ -63,13 +63,17 @@ public class TimeSwitchWindow : EditorWindow
         }
 
         //Show current Objects Time
-        GUILayout.Label("Selected Object Is In:", EditorStyles.boldLabel);
-        GameObject seledctedSingle = Selection.activeGameObject;
-        if (seledctedSingle != null)
-            GUILayout.Label("\t" + getTime(seledctedSingle));
+        GameObject selectedSingle = Selection.activeGameObject;
+        if (selectedSingle != null)
+        {
+            GUILayout.Label(selectedSingle.name + " Is In:", EditorStyles.boldLabel);
+            GUILayout.Label("\t" + getTime(selectedSingle));
+        }
         else
-            GUILayout.Label("\t No object selected");
-
+        {
+            GUILayout.Label("No object selected", EditorStyles.boldLabel);
+            GUILayout.Label("\t X");
+        }
 
         //Move selected obejcts to time
         GUILayout.Label("Move Selected Objects To:", EditorStyles.boldLabel);
