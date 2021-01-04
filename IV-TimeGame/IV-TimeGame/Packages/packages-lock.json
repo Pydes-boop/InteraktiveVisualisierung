@@ -37,6 +37,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.0.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "8.2.0",
       "depth": 1,
@@ -128,6 +135,15 @@
         "com.unity.shadergraph": "8.2.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "io.dyrda.first-person-controller": {
+      "version": "https://github.com/dyrdaio/first-person-controller-for-unity.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.inputsystem": "1.0.1"
+      },
+      "hash": "a9e6bf451792d19a272e924e3eebb1fcc852a441"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
