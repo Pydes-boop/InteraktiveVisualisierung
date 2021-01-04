@@ -3,6 +3,7 @@
  * Sets up the Camera for Time Switch Rendering, so it doesnt have to be done by hand
  * Also refreshes if resolution changes
 */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class TimeSwapCamera : MonoBehaviour
     public Material renderMixer;
     public string pastTextureRefernce = "pastTexture";
     public string presentTextureRefernce = "presentTexture";
+    public string lerpValueRefernce = "lerpValue";
 
     Resolution screenRes;
     
@@ -35,6 +37,13 @@ public class TimeSwapCamera : MonoBehaviour
         screenRes = Screen.currentResolution;
         createCameras();
         updateTextures();
+    }
+
+    void Start()
+    {
+        TimeSwapInput ti = GameObject.FindObjectOfType<TimeSwapInput>();
+        if(ti)
+            ti.OnTimeToggle += setLerpValue;
     }
 
     void Update()
@@ -135,6 +144,11 @@ public class TimeSwapCamera : MonoBehaviour
         //display the magic
         UIdisplay.material = renderMixer;
         UIdisplay.gameObject.layer = 5;//LayerMask.GetMask("UI");
+    }
+
+    void setLerpValue(int state)//TODO: make this change slowly, not instantly
+    {
+        renderMixer.SetFloat(lerpValueRefernce, state);
     }
 
     void OnDrawGizmosSelected()
