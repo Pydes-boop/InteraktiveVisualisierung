@@ -33,10 +33,16 @@ public class Inventory_UI : MonoBehaviour
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
+        inventory.OnItemListChanged += OnItemListChanged;
         RefreshInventory(0);
     }
-    public void RefreshInventory(int startingFrom)
+    private void OnItemListChanged(object sender, System.EventArgs e)
     {
+        RefreshInventory(0);
+    }
+     public void RefreshInventory(int startingFrom)
+    {
+        DestroyOldItemslots();
         int counter = startingFrom;
      
         while(inventory.GetItemList().Count>counter&&counter<maxPerPage-startingFrom)
@@ -57,6 +63,16 @@ public class Inventory_UI : MonoBehaviour
             counter++;
         }
         WriteDescription();
+    }
+    private void DestroyOldItemSlots()
+    {
+        foreach(Transform child in itemSlotContainer)
+        {
+            if (child == itemSlotTemplate)
+                continue;
+            Destroy(child.gameObject);
+        }
+
     }
 
     private void WriteDescription()
