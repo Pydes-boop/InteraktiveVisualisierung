@@ -14,6 +14,9 @@ public class TimeSwapCamera : MonoBehaviour
     RenderTexture pastTexture;
     RenderTexture presentTexture;
 
+    //RenderTexture pastDepth;
+    //RenderTexture presentDepth;
+
     Camera pastCamera;
     Camera presentCamera;
 
@@ -23,6 +26,8 @@ public class TimeSwapCamera : MonoBehaviour
     public Material renderMixer;
     public string pastTextureRefernce = "pastTexture";
     public string presentTextureRefernce = "presentTexture";
+    //public string pastDepthRefernce = "pastDepth";
+    //public string presentDepthRefernce = "presentDepth";
     public string lerpValueRefernce = "lerpValue";
 
     Resolution screenRes;
@@ -31,6 +36,7 @@ public class TimeSwapCamera : MonoBehaviour
 
     Canvas canvas;
     RawImage UIdisplay;
+    
 
     void Awake()
     {
@@ -64,19 +70,31 @@ public class TimeSwapCamera : MonoBehaviour
         //TODO: maybe add depth channel
 
         //create the buffers
-        pastTexture = new RenderTexture(screenRes.width, screenRes.height, 16);
-        presentTexture = new RenderTexture(screenRes.width, screenRes.height, 16);
+        pastTexture = new RenderTexture(screenRes.width, screenRes.height, 0);
+        presentTexture = new RenderTexture(screenRes.width, screenRes.height, 0);
+
+        //pastDepth = new RenderTexture(screenRes.width, screenRes.height,0);
+        //presentDepth = new RenderTexture(screenRes.width, screenRes.height,0);
 
         pastTexture.Create();
         presentTexture.Create();
+
+        //pastDepth.Create();
+        //pastDepth.Create();
 
         //render to them
         pastCamera.targetTexture = pastTexture;
         presentCamera.targetTexture = presentTexture;
 
+        //pastCamera.SetTargetBuffers(pastTexture.colorBuffer, pastDepth.colorBuffer);
+        //presentCamera.SetTargetBuffers(presentTexture.colorBuffer, presentDepth.colorBuffer);
+
         //plug them into the shader
         renderMixer.SetTexture(pastTextureRefernce, pastTexture);
         renderMixer.SetTexture(presentTextureRefernce, presentTexture);
+
+        //renderMixer.SetTexture(pastDepthRefernce, pastDepth);
+        //renderMixer.SetTexture(presentDepthRefernce, presentDepth);
     }
 
     void createCameras()
@@ -112,6 +130,7 @@ public class TimeSwapCamera : MonoBehaviour
         LayerMask finalMask = LayerMask.GetMask("UI");
         finalCamera.cullingMask = finalMask;
 
+        finalCamera.clearFlags = CameraClearFlags.SolidColor;
 
         //now set the ui so, the final camera can see the mixed effect
         canvas = new GameObject("canvas").AddComponent<Canvas>();
