@@ -24,7 +24,7 @@ public class Inventory_UI : MonoBehaviour
         inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
         inventory.AddItem(new Item("test 123", Item.ItemType.Note));
         currentlySelected = 0;
-        RefreshInventory(0);
+        //RefreshInventory(0);
     }
     void Start()
     {
@@ -51,7 +51,7 @@ public class Inventory_UI : MonoBehaviour
             Item i = inventory.GetItemList()[counter];
             if (counter == currentlySelected)
                 rTransform = Instantiate(itemSlotTemplateSelected, itemSlotContainer).GetComponent<RectTransform>();
-            else
+           else
              rTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
            
             rTransform.gameObject.SetActive(true);
@@ -62,13 +62,14 @@ public class Inventory_UI : MonoBehaviour
             image.sprite = i.GetIcon();
             counter++;
         }
+        itemSlotTemplate.gameObject.SetActive(false);
         WriteDescription();
     }
     private void DestroyOldItemSlots()
     {
         foreach(Transform child in itemSlotContainer)
         {
-            if (child == itemSlotTemplate)
+            if (child == itemSlotTemplate|| child ==itemSlotTemplateSelected)
                 continue;
             Destroy(child.gameObject);
         }
