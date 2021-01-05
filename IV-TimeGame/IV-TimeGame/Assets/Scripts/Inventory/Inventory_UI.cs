@@ -42,7 +42,7 @@ public class Inventory_UI : MonoBehaviour
     }
      public void RefreshInventory(int startingFrom)
     {
-        DestroyOldItemslots();
+        DestroyOldItemSlots();
         int counter = startingFrom;
      
         while(inventory.GetItemList().Count>counter&&counter<maxPerPage-startingFrom)
@@ -91,5 +91,9 @@ public class Inventory_UI : MonoBehaviour
         image.sprite = i.GetSprite();
         text.text = i.GetDescription();
     }
-   
+    private void OnDisable()
+    {
+        inventory.OnItemListChanged -= OnItemListChanged;
+    }
+
 }
