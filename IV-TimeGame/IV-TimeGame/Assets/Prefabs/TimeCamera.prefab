@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9061696612033058642}
   - component: {fileID: 9061696612033058643}
+  - component: {fileID: 5267636950469582021}
   m_Layer: 0
   m_Name: TimeCamera
   m_TagString: Untagged
@@ -52,3 +53,17 @@ MonoBehaviour:
   renderMixer: {fileID: 2100000, guid: 9cf2027bceacdb444b63586b10626b55, type: 2}
   pastTextureRefernce: pastTexture
   presentTextureRefernce: presentTexture
+  lerpValueRefernce: lerpValue
+--- !u!114 &5267636950469582021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061696612033058604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23310f6206a54264bbcfee762ca3e736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToggleKey: 99
