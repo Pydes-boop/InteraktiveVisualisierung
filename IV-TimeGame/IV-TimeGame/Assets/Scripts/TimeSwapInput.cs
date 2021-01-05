@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class TimeSwapInput : MonoBehaviour
 {
+    //Script by Philipp
+    //Event system for time shift
+
     public KeyCode timeToggleKey = KeyCode.C;
 
     public delegate void TimeToggle(int state);
-    public event TimeToggle OnTimeToggle;
+    public static event TimeToggle OnTimeToggle;
 
     //State 0 = past; State 1 = present
     private int state = 0;
