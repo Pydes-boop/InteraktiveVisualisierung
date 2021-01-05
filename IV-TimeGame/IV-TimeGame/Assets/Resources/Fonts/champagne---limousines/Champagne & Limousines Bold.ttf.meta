@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: a1e0aa6326fa0da4ba79ece23ef13f52
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Champagne & Limousines
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3acef5e2cbfc82d46ab15a14a6fd2f65, type: 3}
+  - {fileID: 12800000, guid: c568796762dfd614bb835df1f6bd5058, type: 3}
+  - {fileID: 12800000, guid: 3eb52e673577cc24f81b39c5c54f81ae, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
