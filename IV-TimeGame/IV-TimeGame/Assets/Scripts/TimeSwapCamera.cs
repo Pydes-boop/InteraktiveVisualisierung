@@ -47,9 +47,10 @@ public class TimeSwapCamera : MonoBehaviour
 
     void Start()
     {
-        TimeSwapInput ti = GameObject.FindObjectOfType<TimeSwapInput>();
-        if(ti)
-            ti.OnTimeToggle += setLerpValue;
+        //TimeSwapInput ti = GameObject.FindObjectOfType<TimeSwapInput>();
+        //if(ti)
+        //    ti.OnTimeToggle += setLerpValue;
+        TimeSwapInput.OnTimeToggle += setLerpValue;
     }
 
     void Update()
