@@ -12,7 +12,10 @@ public class TimeSwapCollision : MonoBehaviour
 
     private void Awake()
     {
-        TimeSwapInput.OnTimeToggle += onTimeChange;
+        TimeSwapInput ti = GameObject.FindObjectOfType<TimeSwapInput>();
+        if (ti)
+            ti.OnTimeToggle += onTimeChange;
+        //TimeSwapInput.OnTimeToggle += onTimeChange;
     }
 
     void onTimeChange(int state)
