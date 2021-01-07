@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0086f82f6e90f7c41811d30027e9a2af
+guid: 309b36ff3ab71994099b0d3cd6a5e439
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bark
-    second: {fileID: 2100000, guid: 4dd25f926e8054d42bb67cd80b5cf5ca, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PineTreeBranch_single_color
-    second: {fileID: 2100000, guid: 9a7a871e7b6619e4eb5525e34686bc03, type: 2}
+      name: GrassSingle
+    second: {fileID: 2100000, guid: 36a7f39e04e194d44b669f1f5eef4761, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
