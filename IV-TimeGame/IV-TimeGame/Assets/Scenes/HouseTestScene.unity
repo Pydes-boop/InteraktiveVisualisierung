@@ -306,7 +306,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6626567936413474977, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
       propertyPath: m_VolumetricDimmer
-      value: 2.53
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626567936413474977, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
+      propertyPath: m_UseContactShadow.m_Override
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626567936413474977, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
+      propertyPath: m_VolumetricShadowDimmer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6626567936413474990, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
       propertyPath: m_BounceIntensity
@@ -319,6 +327,10 @@ PrefabInstance:
     - target: {fileID: 6626567936413474990, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
       propertyPath: m_AreaSize.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626567936413474990, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 6626567936413474991, guid: f4c90d954c92c4a4eb3236d39115213c, type: 3}
       propertyPath: m_LocalRotation.x
