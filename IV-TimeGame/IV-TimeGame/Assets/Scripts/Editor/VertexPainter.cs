@@ -124,37 +124,37 @@ public class VertexPainter : EditorWindow
 
                     if (Physics.Raycast(ray, out hit))
                     {
-                        //Debug.Log("Raycast: " + hit.collider.gameObject);
-                        //Debug.DrawLine(ray.origin, hit.point, Color.white, 5.0f);
-
                         mousePos = hit.point;
-                        
-                        //Are we even aiming at the selected object?
-                        if (hit.collider.gameObject == selected)
+
+                        //Do we really want to paint now?
+                        if 
+                        (
+                            hit.collider.gameObject == selected //Are we even aiming at the selected object?
+                            && Mouse.current.leftButton.IsPressed()//Are we trying to paint?
+                            && EditorWindow.mouseOverWindow != null
+                            && EditorWindow.mouseOverWindow.ToString().Contains("SceneView")//Am I shooting "through" the UI?
+                        )
                         {
-                            //Do we really want to paint now?
-                            if (Mouse.current.leftButton.IsPressed())
+                            
+                            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene());
+
+                            Matrix4x4 localToWorld = meshFilter.transform.localToWorldMatrix;
+
+                            //loop over every vertex and maybe paint it
+                            for (int i = 0; i < positions.Length; i++)
                             {
-                                UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene());
+                                //determine world position and distance to mouse
+                                Vector3 worldPos = localToWorld.MultiplyPoint3x4(positions[i]);
+                                float dis = Vector3.Distance(hit.point, worldPos);
 
-                                Matrix4x4 localToWorld = meshFilter.transform.localToWorldMatrix;
-
-                                //loop over every vertex and maybe paint it
-                                for (int i = 0; i < positions.Length; i++)
+                                if (dis <= brushSize)
                                 {
-                                    //determine world position and distance to mouse
-                                    Vector3 worldPos = localToWorld.MultiplyPoint3x4(positions[i]);
-                                    float dis = Vector3.Distance(hit.point, worldPos);
-
-                                    if (dis <= brushSize)
-                                    {
-                                        colors[i] = currentColor * strength + colors[i] * (1 - strength);//alpha blending
-                                    }
+                                    colors[i] = currentColor * strength + colors[i] * (1 - strength);//alpha blending
                                 }
-
-                                //apply it all
-                                meshFilter.mesh.colors = colors;
                             }
+
+                            //apply it all
+                            meshFilter.mesh.colors = colors;
                         }
                     }
                 }
@@ -169,12 +169,7 @@ public class VertexPainter : EditorWindow
     {
         Repaint();
     }
-    /*
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(mousePos, brushSize);
-    }
-    */
+
     //Using custom scene icon, cause editor windows cant draw gizmps
     void drawDebugCross(Vector3 pos, float s, Color c, float t)
     {
