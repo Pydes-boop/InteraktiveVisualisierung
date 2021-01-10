@@ -25,6 +25,8 @@ public class TimeSwapInput : MonoBehaviour
 
     void Update()
     {
+        //no need for two systems
+        /*
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             //change state
@@ -35,14 +37,16 @@ public class TimeSwapInput : MonoBehaviour
             //notify subscribers
             OnTimeToggle?.Invoke(state);
         }
-
+        */
         if (Keyboard.current.tKey.wasPressedThisFrame && !smooth)
         {
             //change state
             smoothStep = 0;
             state = state == 0 ? 1 : 0;
             smooth = true;
-            
+
+            //Also notify fast subscribers on smooth
+            OnTimeToggle?.Invoke(state);
         }
 
         if (smooth) 
