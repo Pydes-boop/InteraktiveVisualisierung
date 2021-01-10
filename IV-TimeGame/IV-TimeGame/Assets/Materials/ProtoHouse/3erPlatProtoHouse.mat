@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HouseTextureTest
+  m_Name: 3erPlatProtoHouse
   m_Shader: {fileID: -6465566751694194690, guid: b6957684a0f0e5a4ab7f656ac5f56398, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -26,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_484C530C:
-        m_Texture: {fileID: 2800000, guid: 9c2d9eaf2e2dc494b9c969229922f871, type: 3}
+        m_Texture: {fileID: 2800000, guid: e2b7e103158f1bd4cb52f656ee98ced1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_5543855E:
@@ -34,19 +34,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_6A37371F:
-        m_Texture: {fileID: 2800000, guid: 37967875bfa96454f8fc63346370fd28, type: 3}
+        m_Texture: {fileID: 2800000, guid: fa42aea4642a5bd468d4614d0076c047, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_AA5D2D7:
-        m_Texture: {fileID: 2800000, guid: 2cc86d1a9ec246b41adfef73c836d869, type: 3}
+        m_Texture: {fileID: 2800000, guid: ded7cc93d9d63324cb6b0e074694c7b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_B1272BA0:
-        m_Texture: {fileID: 2800000, guid: 736ad80d1706535458aebfbafede0237, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7189fc8ebf3c7f74fb802ee546f45173, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_E52EB8F4:
-        m_Texture: {fileID: 2800000, guid: f52f8dc478109834e81baa38635847f9, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1d4c2f4e9ff87b4fac830113329c4b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -134,9 +134,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_5472EE08: 0
     - Boolean_95F7ACDF: 1
     - Vector1_58BCF900: 0.5
-    - Vector1_FE29BE36: 10
+    - Vector1_FE29BE36: 2
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
