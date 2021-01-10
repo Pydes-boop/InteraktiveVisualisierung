@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Canvas_Script : MonoBehaviour, IInventorySignals
 {
@@ -23,17 +23,24 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public InventoryInputControl inventoryInputControl;
     public Inventory_UI ui;
     public GameObject inventoryObject;
+
+    private Text xText;
     private void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
+       
     }
     private void Start()
     {
+    //    Debug.Log("test");
         _up = new Subject<Unit>().AddTo(this);
         _down = new Subject<Unit>().AddTo(this);
         _toggleMenu = new Subject<Unit>().AddTo(this);
         HandleUpDown();
-        ui = transform.Find("Inventory").GetComponent<Inventory_UI>();
+        ui = inventoryObject.GetComponent<Inventory_UI>();
+        xText = transform.Find("PressXText").GetComponent<Text>();
+        
+        
     }
 
     private void HandleUpDown()
@@ -44,6 +51,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     private void GoUp()
     {
+        
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory)
         {
             ui.GoUp();
@@ -60,12 +68,14 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     {
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory) 
         {
-            inventoryObject.SetActive(true);
+            ui.SetActive(true);
             ui.RefreshInventory(0);
+            xText.text = "Press (X) to close inventory";
         }
         else
         {
-            inventoryObject.SetActive(false);
+            ui.SetActive(false);
+            xText.text = "Press (X) to open inventory";
         }
     }
 }

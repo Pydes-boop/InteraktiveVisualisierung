@@ -16,37 +16,46 @@ public class Inventory_UI : MonoBehaviour
     private Transform itemDescription;
     private int currentlySelected;
     private int currentlyAt;
+    private Transform tr;
     private void Awake()
     {
-        itemSlotContainer = transform.Find("ItemSlotContainer");
+        tr = transform.Find("InventoryContainer");
+        itemSlotContainer = tr.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
         itemSlotTemplateSelected = itemSlotContainer.Find("ItemSlotTemplateSelected");
-        itemDescription = transform.Find("Description");
+        itemDescription = tr.Find("Description");
         SetInventory(new Inventory());
         inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
         inventory.AddItem(new Item("test 123", Item.ItemType.Note));
+
+        for(int i =0; i< 15; i ++)
+        {
+            inventory.AddItem(new Item("I: " + i, Item.ItemType.Key));
+        }
         currentlySelected = 0;
         currentlyAt = 0;
         //RefreshInventory(0);
+        tr.gameObject.SetActive(false);
+        
+       
     }
-    void Start()
-    {
-        currentlyAt = 0;
-    }
+   
     public void GoUp()
     {
         if (currentlySelected > 0)
             currentlySelected--;
         if (currentlySelected < currentlyAt)
-            currentlyAt = currentlySelected;
+            currentlyAt--;
         RefreshInventory(currentlyAt);
     }
     public void GoDown()
     {
+        
         if (currentlySelected < inventory.GetItemList().Count - 1)
             currentlySelected++;
-        if (currentlyAt + maxPerPage < currentlySelected)
-            currentlyAt = currentlySelected;
+        if (currentlyAt + maxPerPage < currentlySelected+1)
+            currentlyAt++;
+        Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
         RefreshInventory(currentlyAt);
     }
    
@@ -64,10 +73,11 @@ public class Inventory_UI : MonoBehaviour
     }
      public void RefreshInventory(int startingFrom)
     {
+       // Debug.Log("Starting From: " + startingFrom);
         DestroyOldItemSlots();
         int counter = startingFrom;
      
-        while(inventory.GetItemList().Count>counter&&counter<maxPerPage-startingFrom)
+        while(inventory.GetItemList().Count>counter&&counter<maxPerPage+startingFrom)
         {
             RectTransform rTransform;
             Item i = inventory.GetItemList()[counter];
@@ -77,7 +87,7 @@ public class Inventory_UI : MonoBehaviour
              rTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
            
             rTransform.gameObject.SetActive(true);
-            rTransform.anchoredPosition -= new Vector2(0, counter * stepSize);
+            rTransform.anchoredPosition -= new Vector2(0, (counter-currentlyAt) * stepSize);
             Image image = rTransform.Find("IconImage").GetComponent<Image>();
             Text text = rTransform.Find("Name").GetComponent<Text>();
             text.text = i.GetName();
@@ -85,6 +95,7 @@ public class Inventory_UI : MonoBehaviour
             counter++;
         }
         itemSlotTemplate.gameObject.SetActive(false);
+        itemSlotTemplateSelected.gameObject.SetActive(false);
         WriteDescription();
     }
     private void DestroyOldItemSlots()
@@ -97,7 +108,10 @@ public class Inventory_UI : MonoBehaviour
         }
 
     }
-
+    public void SetActive(bool active)
+    {
+        tr.gameObject.SetActive(active);
+    }
     private void WriteDescription()
     {
         Transform t = itemDescription.Find("DescriptionContainer");
