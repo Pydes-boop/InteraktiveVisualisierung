@@ -8,12 +8,14 @@ public class Inventory_UI : MonoBehaviour
     public float stepSize;
     public int maxPerPage;
     public Inventory inventory;
+    
     // Start is called before the first frame update
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform itemSlotTemplateSelected;
     private Transform itemDescription;
     private int currentlySelected;
+    private int currentlyAt;
     private void Awake()
     {
         itemSlotContainer = transform.Find("ItemSlotContainer");
@@ -24,20 +26,40 @@ public class Inventory_UI : MonoBehaviour
         inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
         inventory.AddItem(new Item("test 123", Item.ItemType.Note));
         currentlySelected = 0;
+        currentlyAt = 0;
         //RefreshInventory(0);
     }
     void Start()
     {
-        
+        currentlyAt = 0;
     }
+    public void GoUp()
+    {
+        if (currentlySelected > 0)
+            currentlySelected--;
+        if (currentlySelected < currentlyAt)
+            currentlyAt = currentlySelected;
+        RefreshInventory(currentlyAt);
+    }
+    public void GoDown()
+    {
+        if (currentlySelected < inventory.GetItemList().Count - 1)
+            currentlySelected++;
+        if (currentlyAt + maxPerPage < currentlySelected)
+            currentlyAt = currentlySelected;
+        RefreshInventory(currentlyAt);
+    }
+   
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
         inventory.OnItemListChanged += OnItemListChanged;
+        currentlyAt = 0;
         RefreshInventory(0);
     }
     private void OnItemListChanged(object sender, System.EventArgs e)
     {
+        currentlyAt = 0;
         RefreshInventory(0);
     }
      public void RefreshInventory(int startingFrom)
