@@ -1,0 +1,52 @@
+{
+    "name": "MenuControls",
+    "maps": [
+        {
+            "name": "Inventory",
+            "id": "3d33a3fc-cf76-4372-9304-e98a349549d1",
+            "actions": [
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "47a49595-fde2-4920-861d-b8ee2dc0a93f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "afd599bd-6985-4f81-959d-e462d08064b6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "770632e1-6417-4705-9bf2-70ae920d3aa9",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b502e5eb-da6a-4b15-b548-4fb5abeaf16f",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
