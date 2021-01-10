@@ -66,4 +66,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23310f6206a54264bbcfee762ca3e736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToggleKey: 99
+  smoothTime: 1.5

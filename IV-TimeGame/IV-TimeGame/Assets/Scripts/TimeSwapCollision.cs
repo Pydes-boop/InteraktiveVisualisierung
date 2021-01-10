@@ -20,6 +20,6 @@ public class TimeSwapCollision : MonoBehaviour
 
     void onTimeChange(int state)
     {
-        gameObject.layer = (state == 0 ? present : past);
+        gameObject.layer = (state == 0 ? past : present);
     }
 }
