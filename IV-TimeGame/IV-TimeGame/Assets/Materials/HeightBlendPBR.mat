@@ -165,13 +165,13 @@ Material:
     - Boolean_B449A191: 1
     - Boolean_CD61443E: 1
     - Boolean_F55DB081: 1
-    - Vector1_4EFE6355: 1.61
-    - Vector1_765ABDD2: 0.274
+    - Vector1_4EFE6355: 1
+    - Vector1_765ABDD2: 0.354
     - Vector1_8EB15D53: 1
     - Vector1_B4D72F5: 1
     - Vector1_D11A8AC3: 1
     - Vector1_DF3D4353: 2
-    - Vector1_F03AAE47: 0.001
+    - Vector1_F03AAE47: 0.032
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -294,7 +294,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Vector2_16EE1408: {r: 1, g: 1, b: 1, a: 1}
+    - Vector2_16EE1408: {r: 2, g: 2, b: 1, a: 1}
     - Vector2_35C60DAD: {r: 2, g: 2, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}

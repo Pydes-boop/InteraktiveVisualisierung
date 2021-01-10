@@ -14,6 +14,8 @@
  *      Note: You may get a message "Instantiating mesh due to calling MeshFilter.mesh during edit mode. [...]". No need to worry
  *      Note: It is impossible to paint vertecies that dont exist, so check your mesh density
  * 6) Dont forget to save the scene when you are done
+ * 
+ * TODO: Might convert from editor window to editor tool in the future, not necessary, but cool - also the right choice of api. oops. Still works though :)
  */
 
 using UnityEngine;
