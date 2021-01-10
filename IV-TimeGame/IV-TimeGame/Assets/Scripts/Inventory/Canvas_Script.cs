@@ -25,12 +25,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public GameObject inventoryObject;
 
     private Text xText;
-    private void Awake()
+   void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
        
     }
-    private void Start()
+     void Start()
     {
     //    Debug.Log("test");
         _up = new Subject<Unit>().AddTo(this);

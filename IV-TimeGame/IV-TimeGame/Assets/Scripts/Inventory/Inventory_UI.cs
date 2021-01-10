@@ -20,7 +20,7 @@ public class Inventory_UI : MonoBehaviour
     
     private void Awake()
     {
-        tr = transform.Find("InventoryContainer");
+        tr = transform.Find("Container");
         itemSlotContainer = tr.Find("ItemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
         itemSlotTemplateSelected = itemSlotContainer.Find("ItemSlotTemplateSelected");
@@ -43,7 +43,7 @@ public class Inventory_UI : MonoBehaviour
         {
             inventory.AddItem(new Item("I: " + i, Item.ItemType.Key));
         }
-        this.SetActive(false);
+        tr.gameObject.SetActive(false);
     }
    
     public void GoUp()
