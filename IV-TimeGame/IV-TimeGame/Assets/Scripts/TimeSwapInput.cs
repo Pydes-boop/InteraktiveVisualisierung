@@ -23,6 +23,12 @@ public class TimeSwapInput : MonoBehaviour
     private float smoothStep = 0f;
     private bool smooth = false;
 
+    void Start()
+    {
+        OnTimeToggle?.Invoke(state);
+        OnSmoothToggle?.Invoke(state);
+    }
+
     void Update()
     {
         //no need for two systems
