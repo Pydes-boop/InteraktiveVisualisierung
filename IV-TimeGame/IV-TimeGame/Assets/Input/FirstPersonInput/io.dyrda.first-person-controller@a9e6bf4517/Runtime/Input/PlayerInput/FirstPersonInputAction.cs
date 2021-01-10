@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Packages/io.dyrda.first-person-controller/Runtime/Input/PlayerInput/FirstPersonInputAction.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input/FirstPersonInput/io.dyrda.first-person-controller@a9e6bf4517/Runtime/Input/PlayerInput/FirstPersonInputAction.inputactions'
 
 using System;
 using System.Collections;
