@@ -39,15 +39,15 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         HandleUpDown();
         ui = inventoryObject.GetComponent<Inventory_UI>();
         xText = transform.Find("PressXText").GetComponent<Text>();
-        
-        
+        ui.SetActive(false);
+
     }
 
     private void HandleUpDown()
     {
         inventoryInputControl.Up.Subscribe(i => { GoUp(); });
         inventoryInputControl.Down.Subscribe(i => { GoDown(); });
-        playerController.firstPersonControllerInput.ToggleMenu.Subscribe(i => { OpenCloseInventory(); });
+        HandleMenuToggle();
     }
     private void GoUp()
     {
@@ -64,8 +64,26 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             ui.GoDown();
         }
     }
+
+    private void HandleMenuToggle()
+    {
+
+        playerController.firstPersonControllerInput.ToggleMenu.Subscribe(i =>
+        {
+             //Debug.Log("hello");
+            if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Player)
+                playerController.currentlyActive = FirstPersonController.CurrentlyActive.Inventory;
+            else
+                playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
+            OpenCloseInventory();
+        });
+        playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
+
+       
+    }
     public void OpenCloseInventory()
     {
+       
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory) 
         {
             ui.SetActive(true);
