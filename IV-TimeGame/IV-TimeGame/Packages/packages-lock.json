@@ -39,7 +39,7 @@
     },
     "com.unity.inputsystem": {
       "version": "1.0.1",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -135,14 +135,6 @@
         "com.unity.shadergraph": "8.2.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "io.dyrda.first-person-controller": {
-      "version": "file:C:/Users/marin/Documents/io.dyrda.first-person-controller@a9e6bf4517",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.inputsystem": "1.0.1"
-      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

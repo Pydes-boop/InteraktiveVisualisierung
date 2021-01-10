@@ -17,6 +17,7 @@ public class Inventory_UI : MonoBehaviour
     private int currentlySelected;
     private int currentlyAt;
     private Transform tr;
+    
     private void Awake()
     {
         tr = transform.Find("InventoryContainer");
@@ -25,19 +26,24 @@ public class Inventory_UI : MonoBehaviour
         itemSlotTemplateSelected = itemSlotContainer.Find("ItemSlotTemplateSelected");
         itemDescription = tr.Find("Description");
         SetInventory(new Inventory());
-        inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
-        inventory.AddItem(new Item("test 123", Item.ItemType.Note));
-
-        for(int i =0; i< 15; i ++)
-        {
-            inventory.AddItem(new Item("I: " + i, Item.ItemType.Key));
-        }
+        
         currentlySelected = 0;
         currentlyAt = 0;
         //RefreshInventory(0);
         tr.gameObject.SetActive(false);
         
        
+    }
+    private void Start()
+    {
+        inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
+        inventory.AddItem(new Item("test 123", Item.ItemType.Note));
+
+        for (int i = 0; i < 15; i++)
+        {
+            inventory.AddItem(new Item("I: " + i, Item.ItemType.Key));
+        }
+        this.SetActive(false);
     }
    
     public void GoUp()
@@ -55,7 +61,7 @@ public class Inventory_UI : MonoBehaviour
             currentlySelected++;
         if (currentlyAt + maxPerPage < currentlySelected+1)
             currentlyAt++;
-        Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
+       // Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
         RefreshInventory(currentlyAt);
     }
    

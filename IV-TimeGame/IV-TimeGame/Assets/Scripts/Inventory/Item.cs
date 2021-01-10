@@ -12,7 +12,7 @@ public class Item
 
     public Item()
     {
-
+        
     }
     public Item(string name, ItemType type)
     {
@@ -24,7 +24,8 @@ public class Item
     public string description = "Test Description";
     public Sprite GetSprite()
     {
-        switch(type)
+       
+        switch (type)
         {
 
             default:
@@ -36,6 +37,7 @@ public class Item
     }
     public Sprite GetIcon()
     {
+        
         switch (type)
         {
            
