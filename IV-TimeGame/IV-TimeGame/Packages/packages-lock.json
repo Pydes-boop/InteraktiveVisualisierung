@@ -137,13 +137,12 @@
       "url": "https://packages.unity.com"
     },
     "io.dyrda.first-person-controller": {
-      "version": "https://github.com/dyrdaio/first-person-controller-for-unity.git#upm",
+      "version": "file:C:/Users/marin/Documents/io.dyrda.first-person-controller@a9e6bf4517",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
         "com.unity.inputsystem": "1.0.1"
-      },
-      "hash": "a9e6bf451792d19a272e924e3eebb1fcc852a441"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
