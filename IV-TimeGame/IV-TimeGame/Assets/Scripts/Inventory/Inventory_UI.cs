@@ -36,7 +36,7 @@ public class Inventory_UI : MonoBehaviour
     }
     private void Start()
     {
-        inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
+        //inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
         inventory.AddItem(new Item("test 123", Item.ItemType.Note));
 
         for (int i = 0; i < 15; i++)
