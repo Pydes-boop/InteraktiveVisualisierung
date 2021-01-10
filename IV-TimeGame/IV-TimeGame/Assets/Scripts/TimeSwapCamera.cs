@@ -48,8 +48,9 @@ public class TimeSwapCamera : MonoBehaviour
     void Start()
     {
         TimeSwapInput ti = GameObject.FindObjectOfType<TimeSwapInput>();
-        if(ti)
-            ti.OnTimeToggle += setLerpValue;
+        if (ti)
+            //ti.OnTimeToggle += setLerpValue;
+            ti.OnSmoothToggle += setLerpValue;
         //TimeSwapInput.OnTimeToggle += setLerpValue;
     }
 
@@ -166,7 +167,7 @@ public class TimeSwapCamera : MonoBehaviour
         UIdisplay.gameObject.layer = 5;//LayerMask.GetMask("UI");
     }
 
-    void setLerpValue(int state)//TODO: make this change slowly, not instantly
+    void setLerpValue(float state)//TODO: make this change slowly, not instantly
     {
         renderMixer.SetFloat(lerpValueRefernce, state);
     }
