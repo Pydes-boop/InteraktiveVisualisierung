@@ -1,52 +1,60 @@
 ﻿using System;
 using UnityEngine;
-
-[RequireComponent(typeof(Camera))]
 public class RightClickZoomSimple : MonoBehaviour
 {
-    public float FovStart = 50;
-    public float FovEnd = 40;
-    public float TransitionTime = 10;
+    [Tooltip("ZoomIn/Out = currentFov +/- Zoom")]
+    public float Zoom = 10;
+    [Tooltip("Currently unused")]
+    public float smooth = 1;
+    [Tooltip("ZoomIn/Out on MouseClick/MouseHold")]
+    public bool MouseClick = true;
 
     private float _currentFov;
-    private float _lerpTime;
+    private bool zoomedIn;
     private Camera past;
     private Camera present;
     private Camera final;
 
     void Start()
     {
+        zoomedIn = false;
         past = GameObject.Find("pastCamera").GetComponent<Camera>();
         present = GameObject.Find("presentCamera").GetComponent<Camera>();
         final = GameObject.Find("finalCamera").GetComponent<Camera>();
+        _currentFov = past.fieldOfView;
     }
 
 
     void Update()
     {
-        if (Input.GetMouseButton(1))
-            ChangeFOV();
+        if (MouseClick)
+        {
+            if (Input.GetMouseButtonDown(1))
+                ChangeFOV();
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(1))
+                ChangeFOV();
+            if (Input.GetMouseButtonUp(1))
+                ChangeFOV();
+        }
 
     }
 
     void ChangeFOV()
     {
-        if (Math.Abs(_currentFov - FovEnd) > float.Epsilon)
+        //TODO: Smooth out Transition with Lerp and Time.DeltaTime
+        if (!zoomedIn)
         {
-            _lerpTime += Time.deltaTime;
-            var t = _lerpTime / TransitionTime;
-
-            t = Mathf.SmoothStep(0, 1, t);
-
-            _currentFov = Mathf.Lerp(FovStart, FovEnd, t);
+            _currentFov -= Zoom;
+            zoomedIn = true;
         }
-        else if (Math.Abs(_currentFov - FovEnd) < float.Epsilon)
+        else
         {
-            _lerpTime = 0;
-            Debug.Log("Switch");
-            var tmp = FovStart;
-            FovStart = FovEnd;
-            FovEnd = tmp;
+            _currentFov += Zoom;
+            zoomedIn = false;
+
         }
 
         past.fieldOfView = _currentFov;
