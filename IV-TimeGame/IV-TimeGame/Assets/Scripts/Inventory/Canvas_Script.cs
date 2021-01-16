@@ -16,6 +16,9 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public IObservable<Unit> ToggleMenu => _toggleMenu;
     private Subject<Unit> _toggleMenu;
 
+    public IObservable<Unit> CloseTextBox=> _closetextbox;
+    private Subject<Unit> _closetextbox;
+
     public GameObject player;
     private FirstPersonController playerController;
     [Header("References")]
@@ -25,10 +28,15 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public GameObject inventoryObject;
 
     private Text xText;
+    private Transform textBox;
    void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
-       
+        ui = inventoryObject.GetComponent<Inventory_UI>();
+        xText = transform.Find("PressXText").GetComponent<Text>();
+        textBox = transform.Find("TextBox");
+        //  Debug.Log("ui Null: " + ui == null);
+        playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
     }
      void Start()
     {
@@ -36,11 +44,17 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         _up = new Subject<Unit>().AddTo(this);
         _down = new Subject<Unit>().AddTo(this);
         _toggleMenu = new Subject<Unit>().AddTo(this);
+        _closetextbox = new Subject<Unit>().AddTo(this);
         HandleUpDown();
-        ui = inventoryObject.GetComponent<Inventory_UI>();
-        xText = transform.Find("PressXText").GetComponent<Text>();
+        HandleTextBox();
+
         ui.SetActive(false);
 
+
+    }
+    private void HandleTextBox()
+    {
+        inventoryInputControl.CloseTextBox.Subscribe(i => { CloseTextBox_Func(); });
     }
 
     private void HandleUpDown()
@@ -70,14 +84,18 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
 
         playerController.firstPersonControllerInput.ToggleMenu.Subscribe(i =>
         {
-             //Debug.Log("hello");
+
+            if (playerController.currentlyActive != FirstPersonController.CurrentlyActive.Player
+                && playerController.currentlyActive != FirstPersonController.CurrentlyActive.Inventory)
+                return;
+            
             if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Player)
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Inventory;
-            else
+            else if(playerController.currentlyActive== FirstPersonController.CurrentlyActive.Inventory)
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
             OpenCloseInventory();
         });
-        playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
+       
 
        
     }
@@ -96,4 +114,31 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             xText.text = "Press (X) to open inventory";
         }
     }
+    public void ReceiveItem(Item item)
+    {
+        ui.inventory.AddItem(item);
+        playerController.currentlyActive = FirstPersonController.CurrentlyActive.Textbox;
+        OpenCloseInventory();
+        OpenTextBox(item.name + " received.");
+       
+    }
+
+    public void OpenTextBox(string text)
+    {
+        textBox.gameObject.SetActive(true);
+        Text t = textBox.Find("Text").GetComponent<Text>();
+        t.text = text;
+        xText.gameObject.SetActive(false);
+        xText.text = "";
+    }
+    public void CloseTextBox_Func()
+    {
+        textBox.gameObject.SetActive(false);
+        if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Textbox)
+            playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
+        xText.gameObject.SetActive(true);
+        OpenCloseInventory();
+      
+    }
+
 }

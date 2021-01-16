@@ -7,7 +7,8 @@ public class Item
     public enum ItemType
     {
         Note = 0,
-        Key = 1
+        Key = 1,
+        Watch= 2
     }
 
     public Item()
@@ -22,16 +23,18 @@ public class Item
     public string name;
     public ItemType type;
     public string description = "Test Description";
+    public Sprite sprite;
     public Sprite GetSprite()
     {
        
+    
         switch (type)
         {
-
-            default:
+            case ItemType.Watch: return ItemAssets.Instance.WatchSprite;
             case ItemType.Note: return ItemAssets.Instance.NoteSprite;
+            default:
             case ItemType.Key: return ItemAssets.Instance.KeySprite;
-      
+  
                 
         }
     }
@@ -42,6 +45,7 @@ public class Item
         {
            
             case ItemType.Note: return ItemAssets.Instance.NoteIcon;
+            case ItemType.Watch:
             case ItemType.Key: return ItemAssets.Instance.KeyIcon;
             default: return ItemAssets.Instance.OtherIcon;
         }
