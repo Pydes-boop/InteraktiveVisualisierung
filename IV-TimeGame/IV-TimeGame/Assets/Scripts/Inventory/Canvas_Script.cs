@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Canvas_Script : MonoBehaviour, IInventorySignals
 {
+    private FirstPersonController.CurrentlyActive lastActive;
     public IObservable<Unit> Up => _up;
     private Subject<Unit> _up;
     public IObservable<Unit> Down=> _down;
@@ -29,6 +30,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
 
     private Text xText;
     private Transform textBox;
+    private bool shouldListen;
    void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
@@ -47,14 +49,40 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         _closetextbox = new Subject<Unit>().AddTo(this);
         HandleUpDown();
         HandleTextBox();
-
+        HandleItemSelected();
         ui.SetActive(false);
+       
 
 
     }
     private void HandleTextBox()
     {
         inventoryInputControl.CloseTextBox.Subscribe(i => { CloseTextBox_Func(); });
+    }
+    private void HandleItemSelected()
+    {
+        inventoryInputControl.CloseTextBox.Subscribe(i => { UseSelectItem(); });
+    }
+    private void UseSelectItem()
+    {
+       
+        if(playerController.currentlyActive==FirstPersonController.CurrentlyActive.Inventory)
+        {
+            if (shouldListen)
+            {
+                // Debug.Log("use item");
+                if (ui.GetSelectedItem() != null)
+                    ui.GetSelectedItem().UseItem();
+                else
+                    OpenTextBox("No item selected.");
+                shouldListen = false;
+            }
+            else
+                shouldListen = true;
+         
+            
+        }
+       
     }
 
     private void HandleUpDown()
@@ -88,9 +116,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             if (playerController.currentlyActive != FirstPersonController.CurrentlyActive.Player
                 && playerController.currentlyActive != FirstPersonController.CurrentlyActive.Inventory)
                 return;
-            
+
             if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Player)
+            {
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Inventory;
+                shouldListen = true;
+            } 
             else if(playerController.currentlyActive== FirstPersonController.CurrentlyActive.Inventory)
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
             OpenCloseInventory();
@@ -117,14 +148,16 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public void ReceiveItem(Item item)
     {
         ui.inventory.AddItem(item);
-        playerController.currentlyActive = FirstPersonController.CurrentlyActive.Textbox;
-        OpenCloseInventory();
         OpenTextBox(item.name + " received.");
+        OpenCloseInventory();
+       
        
     }
 
     public void OpenTextBox(string text)
     {
+        lastActive = playerController.currentlyActive;
+        playerController.currentlyActive = FirstPersonController.CurrentlyActive.Textbox;
         textBox.gameObject.SetActive(true);
         Text t = textBox.Find("Text").GetComponent<Text>();
         t.text = text;
@@ -133,9 +166,10 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     public void CloseTextBox_Func()
     {
+        //Debug.Log("Close Textbox:" + (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Textbox));
         textBox.gameObject.SetActive(false);
         if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Textbox)
-            playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
+            playerController.currentlyActive = lastActive;
         xText.gameObject.SetActive(true);
         OpenCloseInventory();
       
