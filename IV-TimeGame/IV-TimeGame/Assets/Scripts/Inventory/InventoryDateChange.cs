@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Script by Philipp
+//changes the time text in the UI
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
