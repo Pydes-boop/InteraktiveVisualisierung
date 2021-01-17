@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 1a874cecdfbb953428036fd12390cdee, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f7b98999b7de5aa488765cec53544d36, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 64780eb2e07e17f458a5e50b757de11e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -885,7 +885,7 @@ Terrain:
   m_GameObject: {fileID: 642820208}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 2bc12f5dd20b8df4297a83a9b0913cd8, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 6429a8ee1a87a8e4ab1af07da7d43349, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
