@@ -11,7 +11,7 @@ namespace DyrdaIo.FirstPersonController
     [RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour, ICharacterSignals
     {
-        public enum CurrentlyActive { Player, Inventory };
+        public enum CurrentlyActive { Player, Inventory, Textbox };
         #region Character Signals
 
         public IObservable<Vector3> moved => _moved;
@@ -213,6 +213,8 @@ namespace DyrdaIo.FirstPersonController
                 .Where(v => v != Vector2.zero)
                 .Subscribe(inputLook =>
                 {
+                    if (currentlyActive != CurrentlyActive.Player)
+                        return;
                     // Translate 2D mouse input into euler angle rotations.
 
                     // Horizontal look with rotation around the vertical axis, where + means clockwise.
