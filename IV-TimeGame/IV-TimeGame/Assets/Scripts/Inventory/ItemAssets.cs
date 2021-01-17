@@ -17,4 +17,5 @@ public class ItemAssets : MonoBehaviour
     public Sprite NoteIcon;
     public Sprite KeyIcon;
     public Sprite OtherIcon;
+    public Sprite WatchSprite;
 }
