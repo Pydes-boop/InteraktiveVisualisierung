@@ -15,6 +15,7 @@ public class Item
     {
         
     }
+
     public Item(string name, ItemType type)
     {
         this.name = name;
@@ -24,6 +25,7 @@ public class Item
     public ItemType type;
     public string description = "Test Description";
     public Sprite sprite;
+    public ItemEffect itemEffect;
     public Sprite GetSprite()
     {
        
@@ -57,6 +59,13 @@ public class Item
     public string GetDescription()
     {
         return description;
+    }
+    public void UseItem()
+    {
+        if (itemEffect == null)
+            itemEffect = new NoItemEffect();
+        itemEffect.UseItem();
+
     }
 }
 

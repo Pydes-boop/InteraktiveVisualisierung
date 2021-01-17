@@ -33,6 +33,12 @@ public class Inventory_UI : MonoBehaviour
         
        
     }
+    public Item GetSelectedItem()
+    {
+        if (inventory.GetItemList().Count > 0 && inventory.GetItemList().Count > currentlySelected)
+            return inventory.GetItemList()[currentlySelected];
+        return null;
+    }
     private void Start()
     {
         SetActive(false);
