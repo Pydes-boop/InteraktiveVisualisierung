@@ -729,6 +729,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4835029338617948964, guid: 06c0a5e5e772d3349ab714f1a8b33b2e, type: 3}
   m_PrefabInstance: {fileID: 2018416990}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179846832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6852013071141890215, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+  m_PrefabInstance: {fileID: 283612449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &179846839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179846832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a8723d3731c0040a913764e6b3034e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 32
+  speedScale: 0.3
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: -1.5
+      outSlope: -1.5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  startFadedOut: 1
 --- !u!1 &249816052
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,23 +924,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4539195867344587888, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
-      propertyPath: volume
-      value: 
-      objectReference: {fileID: 283612450}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
---- !u!114 &283612450 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6014761611579870872, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
-  m_PrefabInstance: {fileID: 283612449}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &285103533
 PrefabInstance:
   m_ObjectHideFlags: 0
