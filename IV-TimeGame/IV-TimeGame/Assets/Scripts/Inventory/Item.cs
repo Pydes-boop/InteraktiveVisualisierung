@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Item 
 {
     public enum ItemType
@@ -23,8 +24,9 @@ public class Item
     }
     public string name;
     public ItemType type;
+    [TextArea(15, 20)]
     public string description = "Test Description";
-    public Sprite sprite;
+   
     public ItemEffect itemEffect;
     public Sprite GetSprite()
     {
