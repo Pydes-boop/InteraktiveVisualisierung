@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/TitleCard.unity
+    guid: 8126a4d0069a551428927001bda44a47
+  - enabled: 1
+    path: Assets/Scenes/DemoSzene.unity
+    guid: fcb9bfbc813bd1f438ebefba5d591548
   m_configObjects: {}
