@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 378218244325276434}
   - component: {fileID: 893467330685611609}
   - component: {fileID: 3685183826065953285}
+  - component: {fileID: 7796916839672021850}
   m_Layer: 0
   m_Name: FirstPersonPlayerTime
   m_TagString: Untagged
@@ -287,6 +288,8 @@ MonoBehaviour:
   stickToGroundForceMagnitude: 5
   minViewAngle: -60
   maxViewAngle: 60
+  inventoryCanvas: {fileID: 0}
+  currentlyActive: 0
 --- !u!114 &893467330685611609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +318,52 @@ MonoBehaviour:
   past: 9
   present: 10
   currentState: 0
+--- !u!114 &7796916839672021850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100775308110648656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42f765f5ccdbc84bafce1fe67dc4ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: {fileID: 0}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00000036123674
+      value: 0.000001007691
+      inSlope: 1.9903886
+      outSlope: 1.9903886
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5014809
+      value: 0.9981421
+      inSlope: 0.047588743
+      outSlope: 0.047588743
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11980458
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.0023584906
+      inSlope: -1.9974833
+      outSlope: -1.9974833
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6283159756087097757
 GameObject:
   m_ObjectHideFlags: 0
