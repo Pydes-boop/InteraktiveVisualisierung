@@ -17,6 +17,7 @@ public class Inventory_UI : MonoBehaviour
     private int currentlySelected;
     private int currentlyAt;
     private Transform tr;
+    private Transform textBox;
     
     private void Awake()
     {
@@ -25,26 +26,25 @@ public class Inventory_UI : MonoBehaviour
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
         itemSlotTemplateSelected = itemSlotContainer.Find("ItemSlotTemplateSelected");
         itemDescription = tr.Find("Description");
+       
         SetInventory(new Inventory());
-        
-        currentlySelected = 0;
-        currentlyAt = 0;
-        //RefreshInventory(0);
-        tr.gameObject.SetActive(false);
+    
+        SetActive(false);
         
        
     }
+    public Item GetSelectedItem()
+    {
+        if (inventory.GetItemList().Count > 0 && inventory.GetItemList().Count > currentlySelected)
+            return inventory.GetItemList()[currentlySelected];
+        return null;
+    }
     private void Start()
     {
-        //inventory.AddItem(new Item("my little pony", Item.ItemType.Key));
-        inventory.AddItem(new Item("test 123", Item.ItemType.Note));
-
-        for (int i = 0; i < 15; i++)
-        {
-            inventory.AddItem(new Item("I: " + i, Item.ItemType.Key));
-        }
-        tr.gameObject.SetActive(false);
+        SetActive(false);
     }
+   
+
    
     public void GoUp()
     {
@@ -77,6 +77,7 @@ public class Inventory_UI : MonoBehaviour
         currentlyAt = 0;
         RefreshInventory(0);
     }
+    
      public void RefreshInventory(int startingFrom)
     {
        // Debug.Log("Starting From: " + startingFrom);
@@ -117,6 +118,11 @@ public class Inventory_UI : MonoBehaviour
     public void SetActive(bool active)
     {
         tr.gameObject.SetActive(active);
+        if (!active)
+        {
+            currentlySelected = 0;
+            currentlyAt = 0;
+        }
     }
     private void WriteDescription()
     {

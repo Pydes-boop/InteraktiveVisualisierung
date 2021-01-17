@@ -14,6 +14,9 @@ public class ActionBasedInventoryControllerInput : InventoryInputControl
     public override IObservable<Unit> Down => _down;
     private Subject<Unit> _down;
 
+    public override IObservable<Unit> CloseTextBox=> _closetextbox;
+    private Subject<Unit> _closetextbox;
+
     public MenuControls _controls;
 
     private void OnEnable()
@@ -36,5 +39,8 @@ public class ActionBasedInventoryControllerInput : InventoryInputControl
         //ToggleMenu
        _down = new Subject<Unit>().AddTo(this);
         _controls.Inventory.Down.performed += context => _down.OnNext(Unit.Default);
-       }
+
+        _closetextbox = new Subject<Unit>().AddTo(this);
+        _controls.Inventory.CloseTextBox.performed += context => _closetextbox.OnNext(Unit.Default);
+    }
 }
