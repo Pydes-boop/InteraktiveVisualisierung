@@ -33,6 +33,14 @@ public class @MenuControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""CloseTextBox"",
+                    ""type"": ""Button"",
+                    ""id"": ""6df93465-04dd-4cd0-8691-331293e4c37f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,17 @@ public class @MenuControls : IInputActionCollection, IDisposable
                     ""action"": ""Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b198216-5624-47f1-bc16-be9dd7c6da63"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseTextBox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +86,7 @@ public class @MenuControls : IInputActionCollection, IDisposable
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Up = m_Inventory.FindAction("Up", throwIfNotFound: true);
         m_Inventory_Down = m_Inventory.FindAction("Down", throwIfNotFound: true);
+        m_Inventory_CloseTextBox = m_Inventory.FindAction("CloseTextBox", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +138,14 @@ public class @MenuControls : IInputActionCollection, IDisposable
     private IInventoryActions m_InventoryActionsCallbackInterface;
     private readonly InputAction m_Inventory_Up;
     private readonly InputAction m_Inventory_Down;
+    private readonly InputAction m_Inventory_CloseTextBox;
     public struct InventoryActions
     {
         private @MenuControls m_Wrapper;
         public InventoryActions(@MenuControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Up => m_Wrapper.m_Inventory_Up;
         public InputAction @Down => m_Wrapper.m_Inventory_Down;
+        public InputAction @CloseTextBox => m_Wrapper.m_Inventory_CloseTextBox;
         public InputActionMap Get() { return m_Wrapper.m_Inventory; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +161,9 @@ public class @MenuControls : IInputActionCollection, IDisposable
                 @Down.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnDown;
                 @Down.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnDown;
                 @Down.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnDown;
+                @CloseTextBox.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnCloseTextBox;
+                @CloseTextBox.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnCloseTextBox;
+                @CloseTextBox.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnCloseTextBox;
             }
             m_Wrapper.m_InventoryActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +174,9 @@ public class @MenuControls : IInputActionCollection, IDisposable
                 @Down.started += instance.OnDown;
                 @Down.performed += instance.OnDown;
                 @Down.canceled += instance.OnDown;
+                @CloseTextBox.started += instance.OnCloseTextBox;
+                @CloseTextBox.performed += instance.OnCloseTextBox;
+                @CloseTextBox.canceled += instance.OnCloseTextBox;
             }
         }
     }
@@ -157,5 +185,6 @@ public class @MenuControls : IInputActionCollection, IDisposable
     {
         void OnUp(InputAction.CallbackContext context);
         void OnDown(InputAction.CallbackContext context);
+        void OnCloseTextBox(InputAction.CallbackContext context);
     }
 }

@@ -9,4 +9,6 @@ public interface IInventorySignals
     IObservable<Unit> Up { get; }
 
     IObservable<Unit> Down { get; }
+
+    IObservable<Unit> CloseTextBox { get; }
 }
