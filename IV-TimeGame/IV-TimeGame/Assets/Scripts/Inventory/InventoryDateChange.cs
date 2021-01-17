@@ -15,9 +15,9 @@ public class InventoryDateChange : MonoBehaviour
     public string prefix = "Date: ";
     public string suffix = "";
 
-    private DateTime date0 = new DateTime(2030, 27, 7);
-    private DateTime date1 = new DateTime(2040, 27, 7);
-    private DateTime counter = new DateTime(2030, 27, 7);
+    private DateTime date0 = new DateTime(2030, 7,27);
+    private DateTime date1 = new DateTime(2040, 7,27);
+    private DateTime counter = new DateTime(2030, 7,27);
 
     float diff;
 
@@ -39,13 +39,13 @@ public class InventoryDateChange : MonoBehaviour
     {
         if (state == 0)
         {
-            counter = new DateTime(2020, 1, 1);
+            counter = new DateTime(2030, 7 , 27);
             setDateText();
             return;
         }
         else if(state == 1)
         {
-            counter = new DateTime(2030, 1, 1);
+            counter = new DateTime(2040, 7, 27);
             setDateText();
             return;
         }
