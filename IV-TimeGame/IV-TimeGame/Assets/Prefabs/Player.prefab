@@ -33,6 +33,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179846839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852013071141890215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a8723d3731c0040a913764e6b3034e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 32
+  speedScale: 0.3
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: -1.5
+      outSlope: -1.5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  startFadedOut: 1
 --- !u!1001 &431009202218486782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,6 +261,11 @@ GameObject:
 --- !u!4 &8168515614481984848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2564278497329111674, guid: 6e73850294c91574f8a1c778f895bb0f, type: 3}
+  m_PrefabInstance: {fileID: 5965651133548941098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6852013071141890215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 999092735022049165, guid: 6e73850294c91574f8a1c778f895bb0f, type: 3}
   m_PrefabInstance: {fileID: 5965651133548941098}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6508419837333665672
