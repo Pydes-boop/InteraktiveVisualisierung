@@ -9,7 +9,7 @@ public class DisableOnStart : MonoBehaviour
     {
         
         StartCoroutine(Disable());
-        this.gameObject.SetActive(false);
+       // this.gameObject.SetActive(false);
     }
     IEnumerator Disable()
     {

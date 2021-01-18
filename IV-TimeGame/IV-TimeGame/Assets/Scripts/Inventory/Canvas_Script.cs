@@ -56,10 +56,6 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         HandleUpDown();
         HandleMenuToggle();
 
-        ui.SetActive(false);
-       
-
-
     }
     private void HandlePositiveInput()
     {
