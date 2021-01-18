@@ -44,14 +44,16 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         textBox = transform.Find("TextBox");
         //  Debug.Log("ui Null: " + ui == null);
         playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
-    }
-     void Start()
-    {
-    //    Debug.Log("test");
+
         _up = new Subject<Unit>().AddTo(this);
         _down = new Subject<Unit>().AddTo(this);
         _toggleMenu = new Subject<Unit>().AddTo(this);
         _closetextbox = new Subject<Unit>().AddTo(this);
+    }
+     void Start()
+    {
+   
+      
         HandlePositiveInput();
         HandleUpDown();
         HandleMenuToggle();
@@ -75,6 +77,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     public void PickUpItemSubscription(NoteInSpace note)
     {
+       
        CloseTextBox.Subscribe(i=>note.PickUpItem());
     }
    
