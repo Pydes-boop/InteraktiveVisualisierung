@@ -18,7 +18,7 @@ public class NoteInSpace : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       // Debug.Log(script == null);
+     
         if (other.CompareTag("Player"))
         {
             script.ActivateInputFText();
@@ -34,6 +34,7 @@ public class NoteInSpace : MonoBehaviour
 
     public void PickUpItem()
     {
+       // Debug.Log("PickUpItem");
         script.ReceiveItem(item);
         script.DeactivateInputFText();
         Destroy(gameObject);
