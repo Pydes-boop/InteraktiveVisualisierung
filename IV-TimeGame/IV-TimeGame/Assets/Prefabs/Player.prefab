@@ -248,6 +248,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1928996176937936291}
     m_Modifications:
+    - target: {fileID: 378218244325276434, guid: 6e73850294c91574f8a1c778f895bb0f, type: 3}
+      propertyPath: walkSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 378218244325276434, guid: 6e73850294c91574f8a1c778f895bb0f, type: 3}
+      propertyPath: runSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1100775308110648656, guid: 6e73850294c91574f8a1c778f895bb0f, type: 3}
       propertyPath: m_Name
       value: FirstPersonPlayerTime
@@ -328,6 +336,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1928996176937936291}
     m_Modifications:
+    - target: {fileID: 660398065219221776, guid: d729ed7f5005a3d4db19927088986c9f, type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 660398065219221777, guid: d729ed7f5005a3d4db19927088986c9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 401.82208
