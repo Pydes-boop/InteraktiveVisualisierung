@@ -1285,6 +1285,14 @@ PrefabInstance:
       propertyPath: weight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6338239663454762040, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: walkSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338239663454762040, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: runSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
 --- !u!1001 &285103533
