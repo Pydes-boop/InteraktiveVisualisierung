@@ -15,7 +15,7 @@ public class Introduction : MonoBehaviour
     {
         
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
 
         Item watch = new Item("Time travelling watch", Item.ItemType.Watch);
         watch.description = "A futuristic watch, handed to you by the contest's committee. Press (T) while walking to travel through time.";
