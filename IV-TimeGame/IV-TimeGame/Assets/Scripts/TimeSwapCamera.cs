@@ -170,6 +170,10 @@ public class TimeSwapCamera : MonoBehaviour
     void setLerpValue(float state)//TODO: make this change slowly, not instantly
     {
         renderMixer.SetFloat(lerpValueRefernce, state);
+
+        //Diable camera if not in use to boost performance
+        presentCamera.gameObject.SetActive(!(state <= 0.001f));
+        pastCamera.gameObject.SetActive(!(state >= 0.999f));
     }
 
     void OnDrawGizmosSelected()
