@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lake
+  m_Name: SmallLake
   m_Shader: {fileID: -6465566751694194690, guid: ad67279bdbbbb784a8b28c06955901d9, type: 3}
   m_ShaderKeywords: _BLENDMODE_ALPHA _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
