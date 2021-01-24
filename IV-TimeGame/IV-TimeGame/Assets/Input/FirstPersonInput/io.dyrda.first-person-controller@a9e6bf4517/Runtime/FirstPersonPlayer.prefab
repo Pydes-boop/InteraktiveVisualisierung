@@ -177,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4374804948076272335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.5}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2068734961874418575}
@@ -222,6 +222,8 @@ MonoBehaviour:
   stickToGroundForceMagnitude: 5
   minViewAngle: -60
   maxViewAngle: 60
+  inventoryCanvas: {fileID: 0}
+  currentlyActive: 0
 --- !u!114 &4277090248450959927
 MonoBehaviour:
   m_ObjectHideFlags: 0
