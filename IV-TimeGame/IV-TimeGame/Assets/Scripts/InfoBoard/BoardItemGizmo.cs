@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropOffGizmo : MonoBehaviour
+public class BoardItemGizmo : MonoBehaviour
 {
 
     private void OnDrawGizmosSelected()

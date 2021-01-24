@@ -10,7 +10,7 @@ using UnityEngine.InputSystem.Controls;
 public class LadderClimb : MonoBehaviour
 {
     public GameObject from, to, up, down;
-    public GameObject Player;
+    private GameObject Player;
     public Vector2 ViewDir = new Vector2(0,0);
 
     public float speed = 1f;
@@ -24,7 +24,7 @@ public class LadderClimb : MonoBehaviour
     private void Awake()
     {
         this.dir = to.transform.position - from.transform.position;
-
+        Player = GameObject.Find("FirstPersonPlayerTime");
     }
 
     private void Update()
@@ -45,8 +45,6 @@ public class LadderClimb : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             float dist = (Player.transform.position - up.transform.position).magnitude;
-            Debug.Log(dist);
-            Debug.Log(Player.transform.position);
             if (dist < triggerSize) 
             {
                 this.isClimbing = true;

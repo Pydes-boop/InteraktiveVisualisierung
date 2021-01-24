@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Dragable
+  - InfoBord
+  - DropOff
+  - Accept
   layers:
   - Default
   - TransparentFX
