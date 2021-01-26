@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 261.90088, g: 324.45578, b: 429.43494, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -275,6 +275,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+--- !u!1 &401547150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2166321672890908032, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
+  m_PrefabInstance: {fileID: 2166321672788790660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &499179056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2166321672818517107, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
+  m_PrefabInstance: {fileID: 2166321672788790660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &725366679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,7 +371,19 @@ MonoBehaviour:
   m_Script: {fileID: 115297980}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
+  m_Entries:
+  - id: 0
+    category: 0
+    gameObject: {fileID: 499179056}
+  - id: 1
+    category: 0
+    gameObject: {fileID: 1321879023}
+  - id: 2
+    category: 0
+    gameObject: {fileID: 401547150}
+  - id: 3
+    category: 0
+    gameObject: {fileID: 800116180}
 --- !u!4 &791919590
 Transform:
   m_ObjectHideFlags: 19
@@ -376,6 +398,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &800116180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2166321671126900548, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
+  m_PrefabInstance: {fileID: 2166321672788790660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1321879023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2166321671714876526, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
+  m_PrefabInstance: {fileID: 2166321672788790660}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1750951078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1693,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2166321671714876520, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
+      propertyPath: m_BakedTexture
+      value: 
+      objectReference: {fileID: 8900000, guid: c0bc82ee5074a8c4691b8d51ec762b71, type: 3}
     - target: {fileID: 2166321671728752294, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3001,6 +3037,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2166321672818517117, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
+      propertyPath: m_BakedTexture
+      value: 
+      objectReference: {fileID: 8900000, guid: a6279f78ba646cd46a0c6e30b80d0449, type: 3}
     - target: {fileID: 2166321672822307998, guid: 44d7e96b5aa7530498edb0efd991d890, type: 3}
       propertyPath: m_IsActive
       value: 1
