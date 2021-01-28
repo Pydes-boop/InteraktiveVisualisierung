@@ -23,6 +23,7 @@ public class NoteScripting : MonoBehaviour
     }
     public void ActivateNextNode()
     {
+        Debug.Log("hello");
         GameObject toDestroy = notes[0];
         notes.RemoveAt(0);
         Destroy(toDestroy);
