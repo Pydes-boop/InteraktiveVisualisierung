@@ -133,12 +133,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Player)
             {
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Inventory;
-                DeactivateInputFText();
+                DeactivatePickUpTextTemp();
             }
             else if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Inventory)
             {
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
-                ActivateInputFText();
+                ActivatePickUpTextTemp();
             }
             OpenCloseInventory();
         });
@@ -164,10 +164,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private void DeactivatePickUpTextTemp()
     {
         fTextWasActive = pickUpItemText.gameObject.activeSelf;
+        
         pickUpItemText.gameObject.SetActive(false);
     }
     private void ActivatePickUpTextTemp()
     {
+        Debug.Log("active pickupText:"+fTextWasActive);
         if (fTextWasActive)
         {
             fTextWasActive = false;
@@ -199,10 +201,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     public void DeactivateInputFText()
     {
+        fTextWasActive = false;
         pickUpItemText.gameObject.SetActive(false);
     }
     public void ActivateInputFText()
     {
+        fTextWasActive = true;
         pickUpItemText.gameObject.SetActive(true);
     }
     public void ActivateTexts()
