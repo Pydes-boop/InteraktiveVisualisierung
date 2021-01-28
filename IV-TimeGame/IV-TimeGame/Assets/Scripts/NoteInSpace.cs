@@ -14,6 +14,7 @@ public class NoteInSpace : MonoBehaviour
     private NoteScripting noteScript;
     private Canvas_Script script;
     private SelectionEffect selectionEffect;
+    private bool isTriggered;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class NoteInSpace : MonoBehaviour
         // Debug.Log("script started");
         item.SetItemEffect();
         item.itemEffect.effectProps = effectProps;
+        isTriggered = false;
        
     }
 
@@ -36,6 +38,7 @@ public class NoteInSpace : MonoBehaviour
         {
             script.ActivateInputFText();
             selectionEffect.enableEffect();
+            isTriggered = true;
 
         }
     }
@@ -45,14 +48,20 @@ public class NoteInSpace : MonoBehaviour
         {
             script.DeactivateInputFText();
             selectionEffect.disableEffect();
+            isTriggered = false;
         }
     }
 
     public void PickUpItem()
     {
-       // Debug.Log("PickUpItem");
-        script.ReceiveItem(item);
-        script.DeactivateInputFText();
-        noteScript.ActivateNextNode();
+        if(isTriggered)
+        {
+            // Debug.Log("PickUpItem");
+            script.ReceiveItem(item);
+            script.DeactivateInputFText();
+            noteScript.ActivateNextNode();
+            isTriggered = false;
+        }
+       
     }
 }

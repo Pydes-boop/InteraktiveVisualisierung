@@ -40,7 +40,7 @@ public class Story : MonoBehaviour
     }
     public void ProgressStory()
     {
-        Debug.Log("this");
+        //Debug.Log("this");
         if(shouldListen)
         {
             StartCoroutine(NextStoryTextBox());
