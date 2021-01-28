@@ -14,7 +14,7 @@ public class LadderClimb : MonoBehaviour
     private Vector2 ViewDir = new Vector2(0,0);
     private Canvas_Script script;
     public float speed = 1f;
-    public float triggerSize = 1f;
+    public float triggerSize = 2f;
     private float progress = 0f;
 
     private Vector3 dir;
