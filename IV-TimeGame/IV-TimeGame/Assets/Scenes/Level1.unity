@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.3371, g: 325.05005, b: 430.21954, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,6 +182,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6561456788234981747, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
+      propertyPath: storyTexts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561456788234981747, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
+      propertyPath: storyTexts.Array.data[0]
+      value: "Welcome to the architecture contest \"Tempora facta casa\"! \n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561456788234981747, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
+      propertyPath: storyTexts.Array.data[1]
+      value: In front of you is a pinboard, on which you need to assign every house
+        to its respective creator. All the architects on this pinboard participated
+        in the biggest architecture contest of Europe 10 years ago, in 2030.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561456788234981747, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
+      propertyPath: storyTexts.Array.data[2]
+      value: In order to find out which architect designed which house, you will
+        need to collect notes that are spread out over the entire area. On each note,
+        you will find a hint for the next note.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561456788234981747, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
+      propertyPath: storyTexts.Array.data[3]
+      value: The hints on the notes will describe various aspects of the buildings
+        - such as the usage, the facade, and the aging process.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561456788234981747, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
+      propertyPath: storyTexts.Array.data[4]
+      value: ' So, have fun exploring the area! The first note is hidden close to
+        your spawning point :).'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d2490af09df2f540bbd59740ff17b7b, type: 3}
 --- !u!115 &115297980
@@ -284,6 +314,14 @@ PrefabInstance:
     - target: {fileID: 6338239663454762040, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
       propertyPath: runSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168515614481984848, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168515614481984848, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
