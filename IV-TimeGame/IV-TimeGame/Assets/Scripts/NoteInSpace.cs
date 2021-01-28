@@ -11,13 +11,14 @@ public class NoteInSpace : MonoBehaviour
     public Item item;
     [SerializeField]
     public ItemEffect.ItemEffectProps effectProps;
-  
+    private NoteScripting noteScript;
     private Canvas_Script script;
     private SelectionEffect selectionEffect;
     // Start is called before the first frame update
     void Start()
     {
         script=GameObject.Find("InventoryCanvas").GetComponent<Canvas_Script>();
+        noteScript = GameObject.Find("Items").GetComponent<NoteScripting>();
         script.PickUpItemSubscription(this);
         selectionEffect = gameObject.GetComponent<SelectionEffect>();
         selectionEffect.disableEffect();
@@ -52,6 +53,6 @@ public class NoteInSpace : MonoBehaviour
        // Debug.Log("PickUpItem");
         script.ReceiveItem(item);
         script.DeactivateInputFText();
-        Destroy(gameObject);
+        noteScript.ActivateNextNode();
     }
 }

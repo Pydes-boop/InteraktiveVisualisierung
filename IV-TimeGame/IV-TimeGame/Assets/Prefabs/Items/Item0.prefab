@@ -136,8 +136,8 @@ MonoBehaviour:
 
 '
   effectProps:
-    bottomText: 'Let''s make the first hint easy: The next house was designed by
-      a person who prefers to be outside.'
+    bottomText: 'Let''s make the first hint easy: The next hint is hidden at a house
+      that was designed by a person who prefers to be outside.'
     topleftText: 'Belongs to house: ???'
     image: {fileID: 0}
 --- !u!114 &691555714352645263
