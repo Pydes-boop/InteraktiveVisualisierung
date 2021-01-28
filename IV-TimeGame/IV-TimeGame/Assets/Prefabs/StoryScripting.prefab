@@ -43,3 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0066571032304db49b3f52de45bb1433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storyTexts:
+  - "Welcome to the architecture contest \"Tempora facta casa\"! \n"
+  - 'In front of you is a pinboard, on which you need to assign every house to its
+    respective creator. All the architects on this pinboard participated in the biggest
+    architecture contest of Europe 10 years ago, in 2030.
+
+    In order to find out
+    which architect designed which house, you will need to collect notes that are
+    spread over the entire area. On each note, you will find a hint for the next
+    note.'
+  - 'The hints on the notes will describe various aspects of the buildings - such
+    as the usage, the facade, and the aging process.
+
+    Furthermore, the notes
+    will not only be distributed across space- but also time.'
+  - Every participant of this contest receives a time travelling watch, with which
+    one can travel across time. This is important, since there is no guarantee, that
+    a piece of paper stays at the same spot for ten years - or that it even existed
+    ten years ago.
+  - ' So, have fun exploring the area! The first note is hidden close to your spawning
+    point :).'
