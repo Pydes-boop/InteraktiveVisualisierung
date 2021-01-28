@@ -32,22 +32,28 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
 
     private Text xText;
     private GameObject infoTexts;
-    private Text pickUpItemText;
+    private Text ladderText;
+    private Text fPickUpItemText;
     private Transform textBox;
     private bool fTextWasActive=false;
-    
+    private Transform fTextTransform;
+    public int fPositionDifference = 30;
+    private bool climbingTextShouldBeActivated = false;
+    private bool climbingStatus = false;
+    private float yPositionOriginalFText;
    void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
         ui = inventoryObject.GetComponent<Inventory_UI>();
         infoTexts = transform.Find("InfoTexts").gameObject;
         xText =infoTexts.transform.Find("PressXText").GetComponent<Text>();
-        pickUpItemText = infoTexts.transform.Find("PickUpItemText").GetComponent<Text>();
-        
+        fPickUpItemText = infoTexts.transform.Find("fPickUpItemText").GetComponent<Text>();
+        fTextTransform = infoTexts.transform.Find("fPickUpItemText");
+        ladderText = infoTexts.transform.Find("LadderText").GetComponent<Text>();
         textBox = transform.Find("TextBox");
         //  Debug.Log("ui Null: " + ui == null);
         playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
-
+        yPositionOriginalFText = fPickUpItemText.gameObject.transform.position.y;
         _up = new Subject<Unit>().AddTo(this);
         _down = new Subject<Unit>().AddTo(this);
         _toggleMenu = new Subject<Unit>().AddTo(this);
@@ -70,7 +76,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         {
                 case FirstPersonController.CurrentlyActive.Inventory: UseSelectItem();
                     break;
-                case FirstPersonController.CurrentlyActive.Player: if(pickUpItemText.IsActive()) _closetextbox.OnNext(Unit.Default);
+                case FirstPersonController.CurrentlyActive.Player: if(fPickUpItemText.IsActive()) _closetextbox.OnNext(Unit.Default);
                     break;
                 case FirstPersonController.CurrentlyActive.Textbox: CloseTextBox_Func(); _progressStory.OnNext(Unit.Default);
                     break;
@@ -179,9 +185,9 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     private void DeactivatePickUpTextTemp()
     {
-        fTextWasActive = pickUpItemText.gameObject.activeSelf;
+        fTextWasActive = fPickUpItemText.gameObject.activeSelf;
         
-        pickUpItemText.gameObject.SetActive(false);
+        fPickUpItemText.gameObject.SetActive(false);
     }
     private void ActivatePickUpTextTemp()
     {
@@ -189,7 +195,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         if (fTextWasActive)
         {
             fTextWasActive = false;
-            pickUpItemText.gameObject.SetActive(true);
+            fPickUpItemText.gameObject.SetActive(true);
         }
     }
     public void ReceiveItem(Item item)
@@ -218,12 +224,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public void DeactivateInputFText()
     {
         fTextWasActive = false;
-        pickUpItemText.gameObject.SetActive(false);
+        fPickUpItemText.gameObject.SetActive(false);
     }
     public void ActivateInputFText()
     {
         fTextWasActive = true;
-        pickUpItemText.gameObject.SetActive(true);
+        fPickUpItemText.gameObject.SetActive(true);
     }
     public void ActivateTexts()
     {
@@ -238,6 +244,38 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         ActivateTexts();
         OpenCloseInventory();
       
+    }
+    public void ClimbingStatusChanged(bool newStatus)
+    {
+        climbingStatus = newStatus;
+        if (climbingStatus)
+            ladderText.text = "Use (E) and (Q) to climb ladder";
+        else
+        {
+            ladderText.text = "Press (E) to climb ladder";
+            if (!climbingTextShouldBeActivated)
+                DeactivateClimbing_Func();
+        }
+           
+    }
+    public void ActivateClimbingText()
+    {
+        climbingTextShouldBeActivated = true;
+        ladderText.gameObject.SetActive(true);
+        fPickUpItemText.gameObject.transform.position = new Vector3(fPickUpItemText.gameObject.transform.position.x,
+           yPositionOriginalFText + 30, fPickUpItemText.gameObject.transform.position.z);
+    }
+    public void DeActivateClimbingText()
+    {
+        climbingTextShouldBeActivated = false;
+        if (!climbingStatus)
+            DeactivateClimbing_Func();
+    }
+    private void DeactivateClimbing_Func()
+    {
+        ladderText.gameObject.SetActive(false);
+        fPickUpItemText.gameObject.transform.position = new Vector3(fPickUpItemText.gameObject.transform.position.x,
+          yPositionOriginalFText , fPickUpItemText.gameObject.transform.position.z);
     }
 
     internal void ShowNoteInUI(Item item, ItemEffect.ItemEffectProps effectProps)

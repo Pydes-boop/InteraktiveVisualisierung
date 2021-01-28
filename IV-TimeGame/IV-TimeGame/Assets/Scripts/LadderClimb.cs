@@ -12,7 +12,7 @@ public class LadderClimb : MonoBehaviour
     public GameObject from, to, up, down;
     private GameObject Player;
     private Vector2 ViewDir = new Vector2(0,0);
-
+    private Canvas_Script script;
     public float speed = 1f;
     public float triggerSize = 1f;
     private float progress = 0f;
@@ -27,6 +27,10 @@ public class LadderClimb : MonoBehaviour
         Player = GameObject.Find("FirstPersonPlayerTime");
         Vector3 dir = down.transform.position - up.transform.position;
         ViewDir = new Vector2(dir.x, dir.z);
+    }
+    private void Start()
+    {
+        script = GameObject.Find("InventoryCanvas").GetComponent<Canvas_Script>();
     }
 
     private void Update()
@@ -49,7 +53,7 @@ public class LadderClimb : MonoBehaviour
             float dist = (Player.transform.position - up.transform.position).magnitude;
             if (dist < triggerSize) 
             {
-                this.isClimbing = true;
+                SetIsClimbing(true);
                 progress = 0;
                 Player.transform.position = from.transform.position;
                 setRotation();
@@ -60,7 +64,7 @@ public class LadderClimb : MonoBehaviour
 
             if (dist < triggerSize)
             {
-                this.isClimbing = true;
+                SetIsClimbing(true);
                 progress = 1;
                 Player.transform.position = to.transform.position;
                 setRotation();
@@ -79,7 +83,7 @@ public class LadderClimb : MonoBehaviour
             || Keyboard.current.wKey.isPressed
             || Keyboard.current.spaceKey.isPressed)
         {
-            this.isClimbing = false;
+            SetIsClimbing(false);
             progress = 0;
             resetRotation();
             return;
@@ -126,6 +130,11 @@ public class LadderClimb : MonoBehaviour
         Gizmos.color = new Color(0, 0.9f, 0.7f);
         Gizmos.DrawWireSphere(up.transform.position, triggerSize);
         Gizmos.DrawWireSphere(down.transform.position, triggerSize);
+    }
+    private void SetIsClimbing(bool isClimbing)
+    {
+        this.isClimbing = isClimbing;
+        script.ClimbingStatusChanged(isClimbing);
     }
 
 
