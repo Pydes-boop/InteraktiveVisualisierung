@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 691555714352645253}
   - component: {fileID: 691555714352645263}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Item0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,9 +126,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    name: First Note
+    effectType: 1
+    name: Note #1
     type: 0
-    description: This is the first note that you picked up. Congratulations!
+    description: 'This is the first note that you picked up. Congratulations!
+
+
+
+
+'
+  effectProps:
+    bottomText: 'Let''s make the first hint easy: The next house was designed by
+      a person who prefers to be outside.'
+    topleftText: 'Belongs to house: ???'
+    image: {fileID: 0}
 --- !u!114 &691555714352645263
 MonoBehaviour:
   m_ObjectHideFlags: 0

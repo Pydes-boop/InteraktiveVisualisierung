@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SelectionEffect))]
 public class NoteInSpace : MonoBehaviour
@@ -8,7 +9,9 @@ public class NoteInSpace : MonoBehaviour
     
     [SerializeField]
     public Item item;
-
+    [SerializeField]
+    public ItemEffect.ItemEffectProps effectProps;
+  
     private Canvas_Script script;
     private SelectionEffect selectionEffect;
     // Start is called before the first frame update
@@ -18,12 +21,15 @@ public class NoteInSpace : MonoBehaviour
         script.PickUpItemSubscription(this);
         selectionEffect = gameObject.GetComponent<SelectionEffect>();
         selectionEffect.disableEffect();
-        Debug.Log("script started");
+        // Debug.Log("script started");
+        item.SetItemEffect();
+        item.itemEffect.effectProps = effectProps;
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hello");
+       
      
         if (other.CompareTag("Player"))
         {

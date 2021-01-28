@@ -5,9 +5,13 @@ using UnityEngine;
 public class NoteItemEffect  :ItemEffect
 { 
   
+    public NoteItemEffect(Item item):base(item)
+    {
+        
+    }
   
     override public void UseItem()
     {
-        script.OpenTextBox("This item is not useable.");
+        script.ShowNoteInUI(item, effectProps);
     }
 }
