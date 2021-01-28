@@ -260,10 +260,11 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     public void ActivateClimbingText()
     {
+        Debug.Log("activate:"+yPositionOriginalFText);
         climbingTextShouldBeActivated = true;
         ladderText.gameObject.SetActive(true);
         fPickUpItemText.gameObject.transform.position = new Vector3(fPickUpItemText.gameObject.transform.position.x,
-           yPositionOriginalFText + 30, fPickUpItemText.gameObject.transform.position.z);
+           yPositionOriginalFText + fPositionDifference, fPickUpItemText.gameObject.transform.position.z);
     }
     public void DeActivateClimbingText()
     {
@@ -273,6 +274,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     private void DeactivateClimbing_Func()
     {
+        Debug.Log("deactivate:"+yPositionOriginalFText);
         ladderText.gameObject.SetActive(false);
         fPickUpItemText.gameObject.transform.position = new Vector3(fPickUpItemText.gameObject.transform.position.x,
           yPositionOriginalFText , fPickUpItemText.gameObject.transform.position.z);
