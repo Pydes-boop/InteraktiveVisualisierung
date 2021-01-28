@@ -47,8 +47,8 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         ui = inventoryObject.GetComponent<Inventory_UI>();
         infoTexts = transform.Find("InfoTexts").gameObject;
         xText =infoTexts.transform.Find("PressXText").GetComponent<Text>();
-        fPickUpItemText = infoTexts.transform.Find("fPickUpItemText").GetComponent<Text>();
-        fTextTransform = infoTexts.transform.Find("fPickUpItemText");
+        fPickUpItemText = infoTexts.transform.Find("PickUpItemText").GetComponent<Text>();
+        fTextTransform = infoTexts.transform.Find("PickUpItemText");
         ladderText = infoTexts.transform.Find("LadderText").GetComponent<Text>();
         textBox = transform.Find("TextBox");
         //  Debug.Log("ui Null: " + ui == null);
