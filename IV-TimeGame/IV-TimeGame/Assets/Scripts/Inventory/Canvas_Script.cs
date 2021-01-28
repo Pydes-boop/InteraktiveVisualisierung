@@ -36,7 +36,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private Text fPickUpItemText;
     private Transform textBox;
     private bool fTextWasActive=false;
-    private Transform fTextTransform;
+    private RectTransform fTextTransform;
     public int fPositionDifference = 30;
     private bool climbingTextShouldBeActivated = false;
     private bool climbingStatus = false;
@@ -48,12 +48,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         infoTexts = transform.Find("InfoTexts").gameObject;
         xText =infoTexts.transform.Find("PressXText").GetComponent<Text>();
         fPickUpItemText = infoTexts.transform.Find("PickUpItemText").GetComponent<Text>();
-        fTextTransform = infoTexts.transform.Find("PickUpItemText");
+        fTextTransform = infoTexts.transform.Find("PickUpItemText").gameObject.GetComponent<RectTransform>();
         ladderText = infoTexts.transform.Find("LadderText").GetComponent<Text>();
         textBox = transform.Find("TextBox");
         //  Debug.Log("ui Null: " + ui == null);
         playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
-        yPositionOriginalFText = fPickUpItemText.gameObject.transform.position.y;
+        
         _up = new Subject<Unit>().AddTo(this);
         _down = new Subject<Unit>().AddTo(this);
         _toggleMenu = new Subject<Unit>().AddTo(this);
@@ -62,7 +62,9 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
      void Start()
     {
-   
+
+        yPositionOriginalFText = fTextTransform.anchoredPosition.y;
+      //  Debug.Log("yPosition: " + yPositionOriginalFText);
       
         HandlePositiveInput();
         HandleUpDown();
@@ -188,6 +190,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         fTextWasActive = fPickUpItemText.gameObject.activeSelf;
         
         fPickUpItemText.gameObject.SetActive(false);
+        ladderText.gameObject.SetActive(false);
     }
     private void ActivatePickUpTextTemp()
     {
@@ -196,6 +199,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         {
             fTextWasActive = false;
             fPickUpItemText.gameObject.SetActive(true);
+            ladderText.gameObject.SetActive(true);
         }
     }
     public void ReceiveItem(Item item)
@@ -260,11 +264,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     public void ActivateClimbingText()
     {
-        Debug.Log("activate:"+yPositionOriginalFText);
+      //  Debug.Log("activate:"+yPositionOriginalFText);
         climbingTextShouldBeActivated = true;
         ladderText.gameObject.SetActive(true);
-        fPickUpItemText.gameObject.transform.position = new Vector3(fPickUpItemText.gameObject.transform.position.x,
-           yPositionOriginalFText + fPositionDifference, fPickUpItemText.gameObject.transform.position.z);
+        fTextTransform.anchoredPosition = new Vector2(fTextTransform.anchoredPosition.x,
+            yPositionOriginalFText + fPositionDifference);
+     
     }
     public void DeActivateClimbingText()
     {
@@ -274,10 +279,10 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     private void DeactivateClimbing_Func()
     {
-        Debug.Log("deactivate:"+yPositionOriginalFText);
+      //  Debug.Log("deactivate:"+yPositionOriginalFText);
         ladderText.gameObject.SetActive(false);
-        fPickUpItemText.gameObject.transform.position = new Vector3(fPickUpItemText.gameObject.transform.position.x,
-          yPositionOriginalFText , fPickUpItemText.gameObject.transform.position.z);
+        fTextTransform.anchoredPosition = new Vector2(fTextTransform.anchoredPosition.x,
+           yPositionOriginalFText);
     }
 
     internal void ShowNoteInUI(Item item, ItemEffect.ItemEffectProps effectProps)
