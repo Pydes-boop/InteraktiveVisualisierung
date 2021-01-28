@@ -18,10 +18,12 @@ public class NoteInSpace : MonoBehaviour
         script.PickUpItemSubscription(this);
         selectionEffect = gameObject.GetComponent<SelectionEffect>();
         selectionEffect.disableEffect();
+        Debug.Log("script started");
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hello");
      
         if (other.CompareTag("Player"))
         {
