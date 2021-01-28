@@ -33,6 +33,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private Text pickUpItemText;
     private Transform textBox;
     private bool fTextWasActive=false;
+    
    void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
@@ -86,12 +87,18 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
        
         if(playerController.currentlyActive==FirstPersonController.CurrentlyActive.Inventory)
         {
-           
+
+            if (ui.IsNoteOpen())
+                ui.CloseNote();
+            else
+            {
                 // Debug.Log("use item");
                 if (ui.GetSelectedItem() != null)
                     ui.GetSelectedItem().UseItem();
                 else
                     OpenTextBox("No item selected.");
+            }
+                
    
         }
         
@@ -152,7 +159,9 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory) 
         {
             ui.SetActive(true);
+           
             ui.RefreshInventory(0);
+            ui.CloseNote();
             xText.text = "Press (X) to close inventory";
         }
         else
@@ -169,7 +178,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     }
     private void ActivatePickUpTextTemp()
     {
-        Debug.Log("active pickupText:"+fTextWasActive);
+       
         if (fTextWasActive)
         {
             fTextWasActive = false;
@@ -224,4 +233,8 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
       
     }
 
+    internal void ShowNoteInUI(Item item, ItemEffect.ItemEffectProps effectProps)
+    {
+        ui.OpenNote(item, effectProps);
+    }
 }

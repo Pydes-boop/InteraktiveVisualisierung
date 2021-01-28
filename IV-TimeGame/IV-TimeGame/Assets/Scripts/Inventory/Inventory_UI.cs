@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static ItemEffect;
 
 public class Inventory_UI : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Inventory_UI : MonoBehaviour
     private Transform itemSlotTemplate;
     private Transform itemSlotTemplateSelected;
     private Transform itemDescription;
+    private Transform noteView;
     private int currentlySelected;
     private int currentlyAt;
     private Transform tr;
@@ -26,6 +28,7 @@ public class Inventory_UI : MonoBehaviour
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
         itemSlotTemplateSelected = itemSlotContainer.Find("ItemSlotTemplateSelected");
         itemDescription = tr.Find("Description");
+        noteView = tr.Find("NoteView");
        
         SetInventory(new Inventory()); 
        
@@ -137,9 +140,44 @@ public class Inventory_UI : MonoBehaviour
         image.sprite = i.GetSprite();
         text.text = i.GetDescription();
     }
+    public void OpenNote(Item item, ItemEffectProps effectProps)
+    {
+        noteView.gameObject.SetActive(true);
+        Transform container = noteView.Find("Container").GetComponent<Transform>();
+        Image image =container.Find("Image").GetComponent<Image>();
+        if (effectProps.image == null)
+        {
+            image.gameObject.SetActive(false);
+            Text bottomText = container.Find("BottomText").GetComponent<Text>();
+            bottomText.text = effectProps.bottomText;
+        }
+        else
+        {
+            image.gameObject.SetActive(true);
+            image.sprite = effectProps.image.sprite;
+        }
+        Text topText = container.Find("TopText").GetComponent<Text>();
+        topText.text = item.GetDescription();
+        Text topLeftText = container.Find("TopLeftText").GetComponent<Text>();
+        topLeftText.text = effectProps.topleftText;
+        Text header = container.Find("Header").GetComponent<Text>();
+        header.text = item.GetName();
+
+    }
+
+    
+    public void CloseNote()
+    {
+        noteView.gameObject.SetActive(false);
+    }
+
     private void OnDisable()
     {
         inventory.OnItemListChanged -= OnItemListChanged;
+    }
+    public bool IsNoteOpen()
+    {
+        return noteView.gameObject.activeSelf;
     }
 
 }

@@ -11,7 +11,7 @@ namespace DyrdaIo.FirstPersonController
     [RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour, ICharacterSignals
     {
-        public enum CurrentlyActive { Player, Inventory, Textbox };
+        public enum CurrentlyActive { Player, Inventory, Textbox};
         #region Character Signals
 
         public IObservable<Vector3> moved => _moved;

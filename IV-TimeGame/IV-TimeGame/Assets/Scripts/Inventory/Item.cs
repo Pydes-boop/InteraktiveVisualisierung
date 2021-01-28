@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Item 
@@ -11,23 +12,37 @@ public class Item
         Key = 1,
         Watch= 2
     }
-
-    public Item()
+    public enum ItemEffectType
     {
-        
+        None=0,
+        Note=1
     }
+    public ItemEffectType effectType=ItemEffectType.None;
 
     public Item(string name, ItemType type)
     {
         this.name = name;
         this.type = type;
+        
+    }
+   
+    public void SetItemEffect()
+    {
+        if (itemEffect == null)
+        {
+            if (effectType == ItemEffectType.None)
+                itemEffect = new NoItemEffect(this);
+            else if (effectType == ItemEffectType.Note)
+                itemEffect = new NoteItemEffect(this);
+        }
     }
     public string name;
     public ItemType type;
-    [TextArea(15, 20)]
+    [TextArea(5, 10)]
     public string description = "Test Description";
    
     public ItemEffect itemEffect;
+   
     public Sprite GetSprite()
     {
        
@@ -64,8 +79,8 @@ public class Item
     }
     public void UseItem()
     {
-        if (itemEffect == null)
-            itemEffect = new NoItemEffect();
+
+        SetItemEffect();
         itemEffect.UseItem();
 
     }
