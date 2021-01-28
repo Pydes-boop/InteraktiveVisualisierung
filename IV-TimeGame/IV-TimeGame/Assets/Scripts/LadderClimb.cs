@@ -1,6 +1,7 @@
 ﻿//script by Philipp
 //simple ladder climbing script
 
+using DyrdaIo.FirstPersonController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class LadderClimb : MonoBehaviour
     public float speed = 1f;
     public float triggerSize = 2f;
     private float progress = 0f;
-
+    private FirstPersonController playerController;
     private Vector3 dir;
 
     private bool isClimbing = false;
@@ -31,17 +32,21 @@ public class LadderClimb : MonoBehaviour
     private void Start()
     {
         script = GameObject.Find("InventoryCanvas").GetComponent<Canvas_Script>();
+        playerController = Player.GetComponent<FirstPersonController>();
     }
 
     private void Update()
     {
-        if (!isClimbing)
+        if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Player)
         {
-            checkInput();
-        }
-        else 
-        {
-            climb();
+            if (!isClimbing)
+            {
+                checkInput();
+            }
+            else
+            {
+                climb();
+            }
         }
         
     }
