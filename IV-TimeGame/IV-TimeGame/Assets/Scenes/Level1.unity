@@ -249,6 +249,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5267258456497598122, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456497598122, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456497598122, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456497598122, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456497598122, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456712493994, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456712493994, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456712493995, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267258456712493995, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd7cf4f8b0772647a6dc79683dfa7c9, type: 3}
 --- !u!1 &525264262
