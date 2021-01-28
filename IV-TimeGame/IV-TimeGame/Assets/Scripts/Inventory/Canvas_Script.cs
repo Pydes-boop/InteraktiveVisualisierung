@@ -19,6 +19,8 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
 
     public IObservable<Unit> CloseTextBox=> _closetextbox;
     private Subject<Unit> _closetextbox;
+    public IObservable<Unit> ProgressStory => _progressStory;
+    private Subject<Unit> _progressStory;
 
     public GameObject player;
     private FirstPersonController playerController;
@@ -50,6 +52,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         _down = new Subject<Unit>().AddTo(this);
         _toggleMenu = new Subject<Unit>().AddTo(this);
         _closetextbox = new Subject<Unit>().AddTo(this);
+        _progressStory = new Subject<Unit>().AddTo(this);
     }
      void Start()
     {
@@ -69,7 +72,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
                     break;
                 case FirstPersonController.CurrentlyActive.Player: if(pickUpItemText.IsActive()) _closetextbox.OnNext(Unit.Default);
                     break;
-                case FirstPersonController.CurrentlyActive.Textbox: CloseTextBox_Func();
+                case FirstPersonController.CurrentlyActive.Textbox: CloseTextBox_Func(); _progressStory.OnNext(Unit.Default);
                     break;
                 default:break;
         }
@@ -80,6 +83,10 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     {
        
        CloseTextBox.Subscribe(i=>note.PickUpItem());
+    }
+    public void SubscribeStory(Story s)
+    {
+        ProgressStory.Subscribe(i => s.ProgressStory());
     }
    
     private void UseSelectItem()
