@@ -832,11 +832,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathToText: Assets/TextMaterial/TitleCardText.txt
   textFont: {fileID: 12800000, guid: 3eb52e673577cc24f81b39c5c54f81ae, type: 3}
+  playClappingAfterEveryParagraph: 1
   textField: {fileID: 1158782644}
   nextLine: {fileID: 592301317}
   nextScene: Level1
   maxLines: 2
-  charspeed: 0.06
+  charspeed: 0.08
   sourceClips: {fileID: 1149427291}
   sourceApplause: {fileID: 1615639646}
 --- !u!114 &1494738465
@@ -963,7 +964,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d69b399bdb3474448933be481e116640, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.286
   m_Pitch: 1
   Loop: 0
   Mute: 0
