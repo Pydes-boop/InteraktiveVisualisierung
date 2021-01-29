@@ -474,6 +474,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: radio
       objectReference: {fileID: 0}
+    - target: {fileID: 4217450085421026332, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217450085421026332, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: MaxDistance
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217450085421026332, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4399416487724149745, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.77
