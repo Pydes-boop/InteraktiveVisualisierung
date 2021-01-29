@@ -836,7 +836,7 @@ MonoBehaviour:
   nextLine: {fileID: 592301317}
   nextScene: Level1
   maxLines: 2
-  charspeed: 0.06
+  charspeed: 0.08
   sourceClips: {fileID: 1149427291}
   sourceApplause: {fileID: 1615639646}
 --- !u!114 &1494738465
