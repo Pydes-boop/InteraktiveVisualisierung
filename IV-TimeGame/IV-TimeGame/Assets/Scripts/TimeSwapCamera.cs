@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class TimeSwapCamera : MonoBehaviour
 {
     RenderTexture pastTexture;
@@ -36,6 +37,9 @@ public class TimeSwapCamera : MonoBehaviour
 
     Canvas canvas;
     RawImage UIdisplay;
+
+    AudioSource source;
+
     
 
     void Awake()
@@ -43,14 +47,21 @@ public class TimeSwapCamera : MonoBehaviour
         screenRes = Screen.currentResolution;
         createCameras();
         updateTextures();
+        source = this.gameObject.GetComponent<AudioSource>();
     }
 
     void Start()
     {
         TimeSwapInput ti = GameObject.FindObjectOfType<TimeSwapInput>();
         if (ti)
-            //ti.OnTimeToggle += setLerpValue;
+        {
             ti.OnSmoothToggle += setLerpValue;
+            ti.OnTimeToggle += PlaySound;
+        }
+             
+        //ti.OnTimeToggle += setLerpValue;
+          
+            
         //TimeSwapInput.OnTimeToggle += setLerpValue;
     }
 
@@ -174,6 +185,11 @@ public class TimeSwapCamera : MonoBehaviour
         //Diable camera if not in use to boost performance
         presentCamera.gameObject.SetActive(!(state <= 0.001f));
         pastCamera.gameObject.SetActive(!(state >= 0.999f));
+    }
+    void PlaySound(int state)
+    {
+        source.Stop();
+        source.Play();
     }
 
     void OnDrawGizmosSelected()
