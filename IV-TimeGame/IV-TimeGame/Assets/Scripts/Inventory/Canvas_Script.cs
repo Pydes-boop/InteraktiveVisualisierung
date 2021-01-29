@@ -6,6 +6,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(InventorySound))]
 public class Canvas_Script : MonoBehaviour, IInventorySignals
 {
     private FirstPersonController.CurrentlyActive lastActive;
@@ -15,6 +16,9 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private Subject<Unit> _down;
 
     public IObservable<Unit> ToggleMenu => _toggleMenu;
+
+    
+
     private Subject<Unit> _toggleMenu;
 
     public IObservable<Unit> CloseTextBox=> _closetextbox;
@@ -41,6 +45,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private bool climbingTextShouldBeActivated = false;
     private bool climbingStatus = false;
     private float yPositionOriginalFText;
+    private InventorySound sound;
    void Awake()
     {
         playerController = player.GetComponent<FirstPersonController>();
@@ -60,7 +65,12 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         _closetextbox = new Subject<Unit>().AddTo(this);
         _progressStory = new Subject<Unit>().AddTo(this);
     }
-     void Start()
+
+    internal void SubscribeSound(InventorySound inventorySound)
+    {
+        this.sound = inventorySound;
+    }
+    void Start()
     {
 
         yPositionOriginalFText = fTextTransform.anchoredPosition.y;
@@ -104,12 +114,18 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         {
 
             if (ui.IsNoteOpen())
+            {
                 ui.CloseNote();
+                sound.PlayMenuSelectionChanged();
+            }
             else
             {
-                // Debug.Log("use item");
+
                 if (ui.GetSelectedItem() != null)
+                {
                     ui.GetSelectedItem().UseItem();
+                   
+                }
                 else
                     OpenTextBox("No item selected.");
             }
@@ -132,6 +148,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory)
         {
             ui.GoUp();
+            sound.PlayMenuSelectionChanged();
         }
     }
     private void GoDown()
@@ -139,6 +156,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory)
         {
             ui.GoDown();
+            sound.PlayMenuSelectionChanged();
         }
     }
 
@@ -156,11 +174,13 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             {
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Inventory;
                 DeactivatePickUpTextTemp();
+                sound.PlayMenuOpenSound();
             }
             else if (playerController.currentlyActive == FirstPersonController.CurrentlyActive.Inventory)
             {
                 playerController.currentlyActive = FirstPersonController.CurrentlyActive.Player;
                 ActivatePickUpTextTemp();
+                sound.PlayMenuCloseSound();
             }
             OpenCloseInventory();
         });
@@ -174,13 +194,14 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         if (playerController.GetCurrentlyActive() == FirstPersonController.CurrentlyActive.Inventory) 
         {
             ui.SetActive(true);
-           
+          
             ui.RefreshInventory(0);
             ui.CloseNote();
             xText.text = "Press (X) to close inventory";
         }
         else
         {
+        
             ui.SetActive(false);
             xText.text = "Press (X) to open inventory";
         }
@@ -206,6 +227,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     {
         ui.inventory.AddItem(item);
         OpenTextBox(item.name + " received.");
+        sound.PlaySuccess();
         OpenCloseInventory();
         DeactiveTexts();
        
@@ -219,6 +241,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         Text t = textBox.Find("Text").GetComponent<Text>();
         t.text = text;
         DeactiveTexts();
+        sound.PlayOpenTextBox();
  
     }
     public void DeactiveTexts()
@@ -247,6 +270,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             playerController.currentlyActive = lastActive;
         ActivateTexts();
         OpenCloseInventory();
+        sound.PlayCloseTextBox();
       
     }
     public void ClimbingStatusChanged(bool newStatus)
@@ -288,5 +312,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     internal void ShowNoteInUI(Item item, ItemEffect.ItemEffectProps effectProps)
     {
         ui.OpenNote(item, effectProps);
+        sound.PlayMenuSelectionChanged();
+
     }
 }
