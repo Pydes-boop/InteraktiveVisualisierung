@@ -9,6 +9,7 @@
 /IV-TimeGame/IV-TimeGame/[Bb]uilds/
 /IV-TimeGame/IV-TimeGame/[Ll]ogs/
 /IV-TimeGame/IV-TimeGame/[Mm]emoryCaptures/
+/IV-TimeGame/IV-TimeGame/ProjectSettings/HDRPProjectSettings.asset
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/IV-TimeGame/IV-TimeGame/[Aa]ssets/**/*.meta
