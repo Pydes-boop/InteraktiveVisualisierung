@@ -30,14 +30,18 @@ public class TitleCardTextAnimation : MonoBehaviour
     private int textPointer = 0;
 
     private List<string> lines;
+    private List<AudioClip> audioFiles;
 
+    public AudioSource sourceClips;
+    public AudioSource sourceApplause;
     private bool hold = false;
-
+    private int currentAudioFile = 0;
     private Vector3 buttonHide;
     private Vector3 buttonShow;
 
     private void Awake()
     {
+        audioFiles = new List<AudioClip>();
         this.textField.text = "";
 
         this.lines = File.ReadLines(pathToText).ToList();
@@ -49,6 +53,13 @@ public class TitleCardTextAnimation : MonoBehaviour
 
         this.nextLine.GetComponentInChildren<Text>().font = textFont;
         this.textField.font = textFont;
+
+        Object[] files = Resources.LoadAll("Sounds/Voice", typeof(AudioClip));
+        foreach (Object o in files)
+            audioFiles.Add((AudioClip)o);
+        audioFiles.Sort((k,j) => k.name.CompareTo(j.name));
+        PlayNextAudio();
+      
     }
 
     void Update()
@@ -72,6 +83,7 @@ public class TitleCardTextAnimation : MonoBehaviour
                 this.nextLine.onClick.AddListener(stepOver);
                 this.nextLine.transform.position = buttonShow;
                 hold = true;
+               
                 return;
             }
 
@@ -80,6 +92,8 @@ public class TitleCardTextAnimation : MonoBehaviour
             timePassed = 0;
             textPointer = 0;
             lineCount++;
+           
+        
             return;
         }
 
@@ -91,6 +105,20 @@ public class TitleCardTextAnimation : MonoBehaviour
         }
 
         timePassed += Time.deltaTime;
+    }
+    private void PlayNextAudio()
+    {
+        Debug.Log("Play Next Audio Called");
+        sourceClips.Stop();
+       
+        sourceApplause.Stop();
+        sourceClips.clip = audioFiles[currentAudioFile];
+        sourceClips.Play();
+        sourceApplause.PlayDelayed(sourceClips.clip.length);
+        Debug.Log("index: " + currentAudioFile);
+        currentAudioFile++;
+        Debug.Log("next audio: " + sourceClips.clip.name);
+        
     }
 
     public void stepOver() 
@@ -104,6 +132,8 @@ public class TitleCardTextAnimation : MonoBehaviour
         lineCount++;
         this.nextLine.onClick.RemoveAllListeners();
         this.nextLine.transform.position = buttonHide;
+        PlayNextAudio();
+
     }
 
     public void switchScene() 
@@ -127,6 +157,8 @@ public class TitleCardTextAnimation : MonoBehaviour
     private string getNextLine() 
     {
         if (this.lines == null || this.lineCount >= this.lines.Count) return "null";
+
         return this.lines.ElementAt(this.lineCount);
     }
+    
 }
