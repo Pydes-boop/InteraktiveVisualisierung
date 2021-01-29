@@ -17,7 +17,7 @@ public class TitleCardTextAnimation : MonoBehaviour
     public string pathToText = "Assets/TextMaterial/TitleCardText.txt";
 
     public Font textFont;
-
+    public bool playClappingAfterEveryParagraph = false;
     public Text textField;
     public Button nextLine;
     public string nextScene = "";
@@ -108,17 +108,25 @@ public class TitleCardTextAnimation : MonoBehaviour
     }
     private void PlayNextAudio()
     {
-        Debug.Log("Play Next Audio Called");
+      
         sourceClips.Stop();
-       
-        sourceApplause.Stop();
         sourceClips.clip = audioFiles[currentAudioFile];
         sourceClips.Play();
-        sourceApplause.PlayDelayed(sourceClips.clip.length);
-        Debug.Log("index: " + currentAudioFile);
+   
         currentAudioFile++;
-        Debug.Log("next audio: " + sourceClips.clip.name);
-        
+        if(!playClappingAfterEveryParagraph)
+        {
+            // Debug.Log("currentAudioFile:" + currentAudioFile + " , count: " + audioFiles.Count);
+            if (currentAudioFile == audioFiles.Count)
+                sourceApplause.PlayDelayed(sourceClips.clip.length);
+        }
+        else
+        {
+            sourceApplause.Stop();
+            sourceApplause.PlayDelayed(sourceClips.clip.length);
+        }
+      
+
     }
 
     public void stepOver() 
