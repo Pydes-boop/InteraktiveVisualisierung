@@ -66,12 +66,16 @@ public class BoardClick : MonoBehaviour
                 if (correctness)
                 {
                     image.sprite = null;
+                    textBox.text = "";
+                    textHead.text = "";
                     image.color = new Color(0, 1, 0, 1);
                 }
                 else
                 {
                     image.sprite = null;
                     image.color = new Color(1, 0, 0, 1);
+                    textBox.text = "";
+                    textHead.text = "";
                 }
             }
 

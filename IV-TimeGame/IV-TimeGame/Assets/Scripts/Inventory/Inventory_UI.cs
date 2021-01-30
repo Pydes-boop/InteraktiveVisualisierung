@@ -47,21 +47,27 @@ public class Inventory_UI : MonoBehaviour
     
     public void GoUp()
     {
-        if (currentlySelected > 0)
-            currentlySelected--;
-        if (currentlySelected < currentlyAt)
-            currentlyAt--;
-        RefreshInventory(currentlyAt);
+        if (!noteView.gameObject.activeSelf)
+        {
+            if (currentlySelected > 0)
+                currentlySelected--;
+            if (currentlySelected < currentlyAt)
+                currentlyAt--;
+            RefreshInventory(currentlyAt);
+        }
+      
     }
     public void GoDown()
     {
-        
-        if (currentlySelected < inventory.GetItemList().Count - 1)
-            currentlySelected++;
-        if (currentlyAt + maxPerPage < currentlySelected+1)
-            currentlyAt++;
-       // Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
-        RefreshInventory(currentlyAt);
+        if (!noteView.gameObject.activeSelf)
+        {
+            if (currentlySelected < inventory.GetItemList().Count - 1)
+                currentlySelected++;
+            if (currentlyAt + maxPerPage < currentlySelected + 1)
+                currentlyAt++;
+            // Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
+            RefreshInventory(currentlyAt);
+        }
     }
    
     public void SetInventory(Inventory inventory)
@@ -154,7 +160,7 @@ public class Inventory_UI : MonoBehaviour
         else
         {
             image.gameObject.SetActive(true);
-            image.sprite = effectProps.image.sprite;
+            image.sprite = effectProps.image;
         }
         Text topText = container.Find("TopText").GetComponent<Text>();
         topText.text = item.GetDescription();

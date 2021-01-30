@@ -13,11 +13,11 @@ public abstract class ItemEffect
     [Serializable]
     public class ItemEffectProps
     {
-        [TextArea(5, 10)]
+        [TextArea(10, 15)]
         public string bottomText;
-        [TextArea(5, 10)]
+       
         public string topleftText;
-        public Image image;
+        public Sprite image;
     }
     public ItemEffect(Item item)
     {

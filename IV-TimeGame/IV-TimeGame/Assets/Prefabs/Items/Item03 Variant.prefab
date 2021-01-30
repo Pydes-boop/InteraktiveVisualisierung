@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1320026990963734474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 691555714352645252, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_Name
+      value: Item03
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645252, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645253, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: item.name
+      value: Note #4
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645253, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: item.description
+      value: 'Isn''t that a nice view of the house? You can nicely see the vertical
+        battens and how they aged over the last ten years. Remember their appearance!
+
+
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645253, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: effectProps.bottomText
+      value: The next hint is located in the eastern part of a house whose support
+        was made out of wood.
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645253, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: effectProps.topleftText
+      value: 'Belongs to house: 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -143.94034
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.5777674
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 41.47576
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.009999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 691555714352645262, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.10000002
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
