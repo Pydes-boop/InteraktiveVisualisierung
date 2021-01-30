@@ -13,6 +13,9 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     public IObservable<Unit> Up => _up;
     private Subject<Unit> _up;
     public IObservable<Unit> Down=> _down;
+
+    
+
     private Subject<Unit> _down;
 
     public IObservable<Unit> ToggleMenu => _toggleMenu;
@@ -20,7 +23,6 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     
 
     private Subject<Unit> _toggleMenu;
-
     public IObservable<Unit> CloseTextBox=> _closetextbox;
     private Subject<Unit> _closetextbox;
     public IObservable<Unit> ProgressStory => _progressStory;
@@ -38,12 +40,15 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private GameObject infoTexts;
     private Text ladderText;
     private Text fPickUpItemText;
+    private Text controlText;
     private Transform textBox;
     private bool fTextWasActive=false;
     private RectTransform fTextTransform;
     public int fPositionDifference = 30;
     private bool climbingTextShouldBeActivated = false;
     private bool climbingStatus = false;
+    private bool controlTextWasActive = false;
+    private bool ladderTextWasActive = false;
     private float yPositionOriginalFText;
     private InventorySound sound;
    void Awake()
@@ -52,6 +57,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         ui = inventoryObject.GetComponent<Inventory_UI>();
         infoTexts = transform.Find("InfoTexts").gameObject;
         xText =infoTexts.transform.Find("PressXText").GetComponent<Text>();
+        controlText = infoTexts.transform.Find("ControlText").GetComponent<Text>();
         fPickUpItemText = infoTexts.transform.Find("PickUpItemText").GetComponent<Text>();
         fTextTransform = infoTexts.transform.Find("PickUpItemText").gameObject.GetComponent<RectTransform>();
         ladderText = infoTexts.transform.Find("LadderText").GetComponent<Text>();
@@ -209,18 +215,30 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     private void DeactivatePickUpTextTemp()
     {
         fTextWasActive = fPickUpItemText.gameObject.activeSelf;
-        
+        controlTextWasActive = controlText.gameObject.activeSelf;
+        ladderTextWasActive = ladderText.gameObject.activeSelf;
         fPickUpItemText.gameObject.SetActive(false);
         ladderText.gameObject.SetActive(false);
+        controlText.gameObject.SetActive(false);
     }
     private void ActivatePickUpTextTemp()
     {
-       
+
         if (fTextWasActive)
         {
             fTextWasActive = false;
             fPickUpItemText.gameObject.SetActive(true);
-            ladderText.gameObject.SetActive(true);
+
+        }
+        if (controlTextWasActive)
+        {
+            controlTextWasActive = false;
+            controlText.gameObject.SetActive(true);
+        }
+        if (ladderTextWasActive)
+        {
+            ladderTextWasActive = false;
+           ladderText.gameObject.SetActive(true);
         }
     }
     public void ReceiveItem(Item item)
@@ -314,5 +332,14 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
         ui.OpenNote(item, effectProps);
         sound.PlayMenuSelectionChanged();
 
+    }
+
+    internal void ActivateControlText()
+    {
+        controlText.gameObject.SetActive(true);
+    }
+    internal void DeactivateControlText()
+    {
+        controlText.gameObject.SetActive(false);
     }
 }
