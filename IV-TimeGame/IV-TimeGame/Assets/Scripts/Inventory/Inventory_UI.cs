@@ -36,6 +36,7 @@ public class Inventory_UI : MonoBehaviour
     void Start()
     {
         SetActive(true);
+       
     }
   
     public Item GetSelectedItem()
@@ -53,6 +54,13 @@ public class Inventory_UI : MonoBehaviour
                 currentlySelected--;
             if (currentlySelected < currentlyAt)
                 currentlyAt--;
+            else if(currentlySelected==0)
+            {
+                currentlySelected = inventory.GetItemList().Count - 1;
+                currentlyAt = currentlySelected - maxPerPage+1;
+                if (currentlyAt < 0)
+                    currentlyAt = 0;
+            }
             RefreshInventory(currentlyAt);
         }
       
@@ -65,6 +73,12 @@ public class Inventory_UI : MonoBehaviour
                 currentlySelected++;
             if (currentlyAt + maxPerPage < currentlySelected + 1)
                 currentlyAt++;
+            else if (currentlySelected == inventory.GetItemList().Count-1)
+            {
+                currentlySelected = 0;
+                currentlyAt = 0;
+               
+            }
             // Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
             RefreshInventory(currentlyAt);
         }
