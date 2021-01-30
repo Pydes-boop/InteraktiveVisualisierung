@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemAssets : MonoBehaviour
 {
     public static ItemAssets Instance { get; private set; }
+  
+
     public void Awake()
     {
         Instance = this;
@@ -18,4 +20,5 @@ public class ItemAssets : MonoBehaviour
     public Sprite KeyIcon;
     public Sprite OtherIcon;
     public Sprite WatchSprite;
+    public Sprite RemoteSprite;
 }

@@ -10,12 +10,14 @@ public class Item
     {
         Note = 0,
         Key = 1,
-        Watch= 2
+        Watch= 2,
+        Remote=3
     }
     public enum ItemEffectType
     {
         None=0,
-        Note=1
+        Note=1,
+        Radio=2
     }
     public ItemEffectType effectType=ItemEffectType.None;
 
@@ -34,6 +36,8 @@ public class Item
                 itemEffect = new NoItemEffect(this);
             else if (effectType == ItemEffectType.Note)
                 itemEffect = new NoteItemEffect(this);
+            else if (effectType == ItemEffectType.Radio)
+                itemEffect = new RadioItemEffect(this);
         }
     }
     public string name;
@@ -51,6 +55,7 @@ public class Item
         {
             case ItemType.Watch: return ItemAssets.Instance.WatchSprite;
             case ItemType.Note: return ItemAssets.Instance.NoteSprite;
+            case ItemType.Remote: return ItemAssets.Instance.RemoteSprite;
             default:
             case ItemType.Key: return ItemAssets.Instance.KeySprite;
   
