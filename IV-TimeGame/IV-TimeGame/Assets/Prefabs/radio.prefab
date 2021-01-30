@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &1248407723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164078558378159196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06, y: 0.013548, z: 0.15}
+  m_Center: {x: 0, y: 0.006774, z: 0}
+--- !u!114 &1248407715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164078558378159196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f00c18a0b913e429d3004a8f15d106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    effectType: 2
+    name: Radio remote control
+    type: 3
+    description: The radio remote control. Use item to start/stop the radio music.
+  effectProps:
+    bottomText: 
+    topleftText: 
+    image: {fileID: 0}
+--- !u!114 &1248407716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164078558378159196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941a7d8227e64b44388d536a4b3547d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3910827963993239883
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +76,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.77, y: 2.03, z: -13.12}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_Children: []
+  m_Children:
+  - {fileID: 543450652744896063}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,16 +148,16 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 160
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -196,3 +243,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radio: {fileID: 4217450085421026332}
+--- !u!1001 &997009876
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4399416487724149745}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.41200256
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2945514
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.8479996
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa89dae135f19214f9e6dd5bf07ef4f3, type: 2}
+    - target: {fileID: 919132149155446097, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+      propertyPath: m_Name
+      value: Vintage_remote_LOD0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+--- !u!4 &543450652744896063 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+  m_PrefabInstance: {fileID: 997009876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8164078558378159196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 14306ba6d49a4bd4baf19c59fa8ec9af, type: 3}
+  m_PrefabInstance: {fileID: 997009876}
+  m_PrefabAsset: {fileID: 0}

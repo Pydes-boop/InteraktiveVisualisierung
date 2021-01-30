@@ -97,7 +97,7 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
             
         });
     }
-    public void PickUpItemSubscription(NoteInSpace note)
+    public void PickUpItemSubscription(ItemInSpace note)
     {
        
        CloseTextBox.Subscribe(i=>note.PickUpItem());

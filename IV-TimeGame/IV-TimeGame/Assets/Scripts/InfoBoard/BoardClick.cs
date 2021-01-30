@@ -45,11 +45,14 @@ public class BoardClick : MonoBehaviour
         {
             if (Cursor.lockState == CursorLockMode.Locked)
             {
+                Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
             }
             else 
             {
+                Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                
             }
         }
 
