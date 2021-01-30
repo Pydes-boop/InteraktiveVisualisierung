@@ -43,7 +43,7 @@ public class ControlTextScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
       //  Debug.Log("bye");
-
+      
         if (other.CompareTag("Player"))
         {
             script.DeactivateControlText();
