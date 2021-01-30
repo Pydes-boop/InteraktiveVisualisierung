@@ -50,8 +50,8 @@ namespace DyrdaIo.FirstPersonController
             _controls = new FirstPersonInputAction();
 
             // Hide the mouse cursor and lock it in the game window.
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+           // Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
 
             // Move:
             _move = this.UpdateAsObservable()
