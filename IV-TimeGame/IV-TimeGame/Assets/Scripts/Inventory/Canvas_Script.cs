@@ -337,9 +337,13 @@ public class Canvas_Script : MonoBehaviour, IInventorySignals
     internal void ActivateControlText()
     {
         controlText.gameObject.SetActive(true);
+        fTextTransform.anchoredPosition = new Vector2(fTextTransform.anchoredPosition.x,
+           yPositionOriginalFText + fPositionDifference);
     }
     internal void DeactivateControlText()
     {
         controlText.gameObject.SetActive(false);
+        fTextTransform.anchoredPosition = new Vector2(fTextTransform.anchoredPosition.x,
+          yPositionOriginalFText);
     }
 }
