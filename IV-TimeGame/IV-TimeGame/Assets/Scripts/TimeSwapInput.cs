@@ -17,7 +17,7 @@ public class TimeSwapInput : MonoBehaviour
     public event SmoothToggle OnSmoothToggle;
 
     //State 0 = past; State 1 = present
-    private int state = 0;
+    private int state = 1;
     private float smoothState = 0;
     public float smoothTime = 1f;
     private float smoothStep = 0f;
