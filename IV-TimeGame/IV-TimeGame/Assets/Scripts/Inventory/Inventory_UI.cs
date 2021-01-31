@@ -45,25 +45,28 @@ public class Inventory_UI : MonoBehaviour
             return inventory.GetItemList()[currentlySelected];
         return null;
     }
-    
+
     public void GoUp()
     {
         if (!noteView.gameObject.activeSelf)
         {
             if (currentlySelected > 0)
                 currentlySelected--;
-            if (currentlySelected < currentlyAt)
-                currentlyAt--;
-            else if(currentlySelected==0)
+            else if (currentlySelected == 0)
             {
                 currentlySelected = inventory.GetItemList().Count - 1;
-                currentlyAt = currentlySelected - maxPerPage+1;
+                currentlyAt = currentlySelected - maxPerPage + 1;
                 if (currentlyAt < 0)
                     currentlyAt = 0;
+                RefreshInventory(currentlyAt);
+                return;
             }
+            if (currentlySelected < currentlyAt)
+                currentlyAt--;
+
             RefreshInventory(currentlyAt);
         }
-      
+
     }
     public void GoDown()
     {
@@ -71,19 +74,22 @@ public class Inventory_UI : MonoBehaviour
         {
             if (currentlySelected < inventory.GetItemList().Count - 1)
                 currentlySelected++;
-            if (currentlyAt + maxPerPage < currentlySelected + 1)
-                currentlyAt++;
-            else if (currentlySelected == inventory.GetItemList().Count-1)
+            else if (currentlySelected == inventory.GetItemList().Count - 1)
             {
                 currentlySelected = 0;
                 currentlyAt = 0;
-               
+                RefreshInventory(currentlyAt);
+                return;
+
             }
+            if (currentlyAt + maxPerPage < currentlySelected + 1)
+                currentlyAt++;
+
             // Debug.Log("currently At: " + currentlyAt + ", selected: " + currentlySelected);
             RefreshInventory(currentlyAt);
         }
     }
-   
+
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
