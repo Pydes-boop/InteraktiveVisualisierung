@@ -170,17 +170,20 @@ public class Inventory_UI : MonoBehaviour
     {
         noteView.gameObject.SetActive(true);
         Transform container = noteView.Find("Container").GetComponent<Transform>();
+        Text bottomText = container.Find("BottomText").GetComponent<Text>();
         Image image =container.Find("Image").GetComponent<Image>();
         if (effectProps.image == null)
         {
             image.gameObject.SetActive(false);
-            Text bottomText = container.Find("BottomText").GetComponent<Text>();
+          
             bottomText.text = effectProps.bottomText;
         }
         else
         {
             image.gameObject.SetActive(true);
             image.sprite = effectProps.image;
+            //Text bottomText = container.Find("BottomText").GetComponent<Text>();
+            bottomText.text = effectProps.bottomText;
         }
         Text topText = container.Find("TopText").GetComponent<Text>();
         topText.text = item.GetDescription();
