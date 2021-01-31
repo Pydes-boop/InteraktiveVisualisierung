@@ -14,7 +14,7 @@ public abstract class ItemEffect
     public class ItemEffectProps
     {
         [TextArea(10, 15)]
-        public string bottomText;
+        public string bottomText="";
        
         public string topleftText;
         public Sprite image;
