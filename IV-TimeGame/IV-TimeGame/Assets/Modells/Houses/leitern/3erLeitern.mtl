@@ -1,0 +1,45 @@
+# Blender MTL File: 'HousesUVUnwrapped.blend'
+# Material Count: 4
+
+newmtl Aluminium
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.380000 0.380000 0.380000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Holz_-_Boden.001
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.440000 0.398420 0.321200
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Dani\\Desktop\\InteraktiveVisualisierung\\IV-TimeGame\\IV-TimeGame\\Assets\\Textures\\newWood\\TexturesCom_WoodPlanks_2x2_1K_albedo.tif
+
+newmtl Holz_-_Brüstung.001
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.410000 0.391345 0.356700
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Dani\\Desktop\\InteraktiveVisualisierung\\IV-TimeGame\\IV-TimeGame\\Assets\\Textures\\newWood\\TexturesCom_WoodPlanks_2x2_1K_albedo.tif
+
+newmtl Holz_-_Handlauf3Haus.001
+Ns 287.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.570000 0.544065 0.495900
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Dani\\Desktop\\InteraktiveVisualisierung\\IV-TimeGame\\IV-TimeGame\\Assets\\Textures\\newWood\\TexturesCom_WoodPlanks_2x2_1K_albedo.tif
