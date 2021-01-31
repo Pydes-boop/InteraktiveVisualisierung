@@ -2194,6 +2194,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1151388029271506791, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388029271506791, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388029271506791, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388029271506791, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.298
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388029271506791, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.061
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388029271506791, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.492
+      objectReference: {fileID: 0}
     - target: {fileID: 3910827963993239883, guid: 75e389e107b94594b907abb87a3f1fb9, type: 3}
       propertyPath: m_Name
       value: radio
