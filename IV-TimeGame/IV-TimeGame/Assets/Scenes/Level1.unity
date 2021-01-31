@@ -1069,6 +1069,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1978202052587522821, guid: 07121db9d02327c41ac9ca96872e3b18, type: 3}
+      propertyPath: effectProps.bottomText
+      value: '    '
+      objectReference: {fileID: 0}
     - target: {fileID: 1978202052587522830, guid: 07121db9d02327c41ac9ca96872e3b18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.35932
@@ -1375,7 +1379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691555714352645253, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
       propertyPath: effectProps.bottomText
-      value: 
+      value: '  '
       objectReference: {fileID: 0}
     - target: {fileID: 691555714352645253, guid: 2a098829ed7e2bf43a98e0027ecc5759, type: 3}
       propertyPath: effectProps.topleftText
@@ -1543,6 +1547,7 @@ GameObject:
   - component: {fileID: 1158947556}
   - component: {fileID: 1158947555}
   - component: {fileID: 1158947554}
+  - component: {fileID: 1158947557}
   m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
@@ -1627,6 +1632,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158947552}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1158947557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158947552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941a7d8227e64b44388d536a4b3547d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1326049070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326049070}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 45.1, y: 1232, z: -0.5}
+  m_LocalPosition: {x: 45.1, y: 1232, z: 12.5}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 2021808880}
