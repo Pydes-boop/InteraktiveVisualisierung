@@ -5,3 +5,4 @@ IV-TimeGame/IV-TimeGame/GameBuild/GameAssembly.dll filter=lfs diff=lfs merge=lfs
 IV-TimeGame/IV-TimeGame/GameBuild/Tempora[[:space:]]Facta[[:space:]]Casa.exe filter=lfs diff=lfs merge=lfs -text
 IV-TimeGame/IV-TimeGame/GameBuild/Tempora[[:space:]]Facta[[:space:]]Casa_BackUpThisFolder_ButDontShipItWithYourGame filter=lfs diff=lfs merge=lfs -text
 IV-TimeGame/IV-TimeGame/GameBuild/Tempora[[:space:]]Facta[[:space:]]Casa_Data filter=lfs diff=lfs merge=lfs -text
+GameBuild/tempora_facta_casa_game.zip filter=lfs diff=lfs merge=lfs -text
