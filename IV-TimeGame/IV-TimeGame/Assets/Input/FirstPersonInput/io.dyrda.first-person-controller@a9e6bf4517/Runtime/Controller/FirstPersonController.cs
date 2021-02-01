@@ -11,6 +11,7 @@ namespace DyrdaIo.FirstPersonController
     [RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour, ICharacterSignals
     {
+        public AudioSource walking;
         public enum CurrentlyActive { Player, Inventory, Textbox};
         #region Character Signals
 
@@ -72,6 +73,7 @@ namespace DyrdaIo.FirstPersonController
             _stepped = new Subject<Unit>().AddTo(this);
             _toggleMenu = new Subject<Unit>().AddTo(this);
             inventoryCanvas = GameObject.Find("InventoryCanvas");
+            
            
         }
 
@@ -177,6 +179,12 @@ namespace DyrdaIo.FirstPersonController
                     // The character is running if the input is active and
                     // the character is actually moving on the ground
                     tempIsRunning = firstPersonControllerInput.Run.Value;
+                    if (!walking.isPlaying)
+                    {
+                        walking.Play();
+                    }
+                } else {
+                    walking.Stop();
                 }
             }
 
