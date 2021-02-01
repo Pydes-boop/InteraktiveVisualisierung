@@ -35,12 +35,12 @@ namespace DyrdaIo.FirstPersonController
                 .AddTo(this);
 
             _characterSignals.Jumped
-                .SelectAlternating(footstepSounds)
+                .SelectAlternating(jumpedSounds)
                 .Subscribe(clip => PlayAudioClip(clip))
                 .AddTo(this);
 
             _characterSignals.Landed
-                .SelectAlternating(footstepSounds)
+                .SelectAlternating(landedSounds)
                 .Subscribe(clip => PlayAudioClip(clip))
                 .AddTo(this);
         }
