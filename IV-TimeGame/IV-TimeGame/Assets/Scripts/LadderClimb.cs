@@ -19,7 +19,7 @@ public class LadderClimb : MonoBehaviour
     private float progress = 0f;
     private FirstPersonController playerController;
     private Vector3 dir;
-
+    private AudioSource source;
     private bool isClimbing = false;
 
     private void Awake()
@@ -28,6 +28,7 @@ public class LadderClimb : MonoBehaviour
         Player = GameObject.Find("FirstPersonPlayerTime");
         Vector3 dir = down.transform.position - up.transform.position;
         ViewDir = new Vector2(dir.x, dir.z);
+        source = GameObject.Find("TimeCamera").GetComponents<AudioSource>()[1];
     }
     private void Start()
     {
@@ -91,21 +92,38 @@ public class LadderClimb : MonoBehaviour
             SetIsClimbing(false);
             progress = 0;
             resetRotation();
+            source.Stop();
             return;
         }
 
         //setting players possition based on key pressed and climb direction
         if (Keyboard.current.eKey.isPressed && this.progress <= 1)
         {
+
+            if (!source.isPlaying)
+            {
+                Debug.Log("start for e");
+                source.Play();
+            }
             this.progress += this.speed * Time.deltaTime;
             this.Player.transform.position += this.dir * this.speed * Time.deltaTime;
             setRotation();
         }
         else if (Keyboard.current.qKey.isPressed && this.progress >= 0)
         {
+            if (!source.isPlaying)
+            {
+                source.Play();
+                Debug.Log("start for q");
+            }
             this.progress -= this.speed * Time.deltaTime;
             this.Player.transform.position += -this.dir * this.speed * Time.deltaTime;
             setRotation();
+        }
+        else
+        {
+            source.Stop();
+            Debug.Log("stop");
         }
     }
 
