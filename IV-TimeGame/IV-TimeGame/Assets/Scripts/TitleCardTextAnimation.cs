@@ -57,19 +57,24 @@ public class TitleCardTextAnimation : MonoBehaviour
         Object[] files = Resources.LoadAll("Sounds/Voice", typeof(AudioClip));
         foreach (Object o in files)
             audioFiles.Add((AudioClip)o);
-        audioFiles.Sort((k,j) => k.name.CompareTo(j.name));
+        audioFiles.Sort((k, j) => k.name.CompareTo(j.name));
         PlayNextAudio();
-      
+
     }
 
     void Update()
     {
         if (hold) return;
-        
+
         if (!textHasNext(CurrentText))
         {
             if (!hasNextLine())
             {
+                if (nextScene == "" || nextScene == null) 
+                {
+                    Text buttonText = nextLine.GetComponentInChildren<Text>();
+                    if(buttonText != null) buttonText.text = "Quit";
+                }
                 this.nextLine.onClick.RemoveAllListeners();
                 this.nextLine.onClick.AddListener(switchScene);
                 this.nextLine.transform.position = buttonShow;
@@ -83,7 +88,7 @@ public class TitleCardTextAnimation : MonoBehaviour
                 this.nextLine.onClick.AddListener(stepOver);
                 this.nextLine.transform.position = buttonShow;
                 hold = true;
-               
+
                 return;
             }
 
@@ -92,12 +97,12 @@ public class TitleCardTextAnimation : MonoBehaviour
             timePassed = 0;
             textPointer = 0;
             lineCount++;
-           
-        
+
+
             return;
         }
 
-        if (timePassed > charspeed && textHasNext(CurrentText)) 
+        if (timePassed > charspeed && textHasNext(CurrentText))
         {
             textField.text += CurrentText.ToCharArray()[textPointer];
             timePassed = 0;
@@ -108,13 +113,17 @@ public class TitleCardTextAnimation : MonoBehaviour
     }
     private void PlayNextAudio()
     {
-      
+        if (sourceClips == null || sourceApplause == null) 
+        {
+            return;
+        }
+
         sourceClips.Stop();
         sourceClips.clip = audioFiles[currentAudioFile];
         sourceClips.Play();
-   
+
         currentAudioFile++;
-        if(!playClappingAfterEveryParagraph)
+        if (!playClappingAfterEveryParagraph)
         {
             // Debug.Log("currentAudioFile:" + currentAudioFile + " , count: " + audioFiles.Count);
             if (currentAudioFile == audioFiles.Count)
@@ -125,11 +134,11 @@ public class TitleCardTextAnimation : MonoBehaviour
             sourceApplause.Stop();
             sourceApplause.PlayDelayed(sourceClips.clip.length);
         }
-      
+
 
     }
 
-    public void stepOver() 
+    public void stepOver()
     {
         this.hold = false;
         CurrentText = getNextLine();
@@ -144,29 +153,33 @@ public class TitleCardTextAnimation : MonoBehaviour
 
     }
 
-    public void switchScene() 
+    public void switchScene()
     {
-
+        if (nextScene == "" ||nextScene == null) 
+        {
+            Application.Quit();
+            return;
+        }
         SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
         this.nextLine.transform.position = buttonHide;
 
     }
 
-    private bool textHasNext(string text) 
+    private bool textHasNext(string text)
     {
         return text.Length > textPointer;
     }
 
-    private bool hasNextLine() 
+    private bool hasNextLine()
     {
         return this.lines != null && this.lineCount < this.lines.Count;
     }
 
-    private string getNextLine() 
+    private string getNextLine()
     {
         if (this.lines == null || this.lineCount >= this.lines.Count) return "null";
 
         return this.lines.ElementAt(this.lineCount);
     }
-    
+
 }
