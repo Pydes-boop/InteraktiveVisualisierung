@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BoardClick : MonoBehaviour
 {
@@ -27,10 +28,13 @@ public class BoardClick : MonoBehaviour
     private Text textBox;
     private Text textHead;
 
+    private FadeIn fadein;
+
     private void Awake()
     {
         this.Player = GameObject.Find("FirstPersonPlayerTime");
         this.cam = this.Player.GetComponentInChildren<Camera>();
+        this.fadein = this.Player.GetComponentInChildren<FadeIn>();
 
         this.image = this.transform.Find("Parant").Find("Canvas").Find("Image").GetComponent<Image>();
         this.textBox = this.transform.Find("Parant").Find("Canvas").Find("Text").GetComponent<Text>();
@@ -41,24 +45,37 @@ public class BoardClick : MonoBehaviour
 
     void Update()
     {
+        if (Keyboard.current.leftCtrlKey.wasPressedThisFrame)
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame) 
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             lastClicked = getClickedObject("Dragable");
-            if (lastClicked != null) 
+            if (lastClicked != null)
             {
                 BoardItem script = lastClicked.GetComponent<BoardItem>();
-                if(script.getDropOff() != null) script.getDropOff().SetActive(true);
+                if (script.getDropOff() != null) script.getDropOff().SetActive(true);
                 script.setDropOff(null);
 
                 this.image.sprite = lastClicked.GetComponent<BoardItemInfo>().image;
                 this.textBox.text = lastClicked.GetComponent<BoardItemInfo>().Text;
                 this.textHead.text = lastClicked.GetComponent<BoardItemInfo>().Header;
-                this.image.color = new Color(1,1,1,1);
+                this.image.color = new Color(1, 1, 1, 1);
             }
 
             GameObject accepted = getClickedObject("Accept");
-            if (accepted != null) 
+            if (accepted != null)
             {
                 bool correctness = checkCorrectness();
                 OnAccept?.Invoke(correctness);
@@ -68,6 +85,11 @@ public class BoardClick : MonoBehaviour
                     textBox.text = "";
                     textHead.text = "";
                     image.color = new Color(0, 1, 0, 1);
+                    fadein.OnFadeDone += SceneTransition;
+                    fadein.setDirection(-1);
+                    fadein.setAlpha(0f);
+                    fadein.setTime(1f);
+                    fadein.StartFade();
                 }
                 else
                 {
@@ -80,16 +102,16 @@ public class BoardClick : MonoBehaviour
 
         }
 
-        if (Mouse.current.leftButton.isPressed && lastClicked != null) 
+        if (Mouse.current.leftButton.isPressed && lastClicked != null)
         {
             Vector3 pointTo = getImpectPoint();
-            if (pointTo.x != -1) 
+            if (pointTo.x != -1)
             {
                 lastClicked.transform.position = pointTo;
             }
         }
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame) 
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             if (lastClicked != null)
             {
@@ -110,7 +132,7 @@ public class BoardClick : MonoBehaviour
         }
     }
 
-    public GameObject getClickedObject(string Tag) 
+    public GameObject getClickedObject(string Tag)
     {
         if (cam == null) return null;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -132,18 +154,19 @@ public class BoardClick : MonoBehaviour
         RaycastHit[] hits;
         hits = Physics.RaycastAll(ray, 100);
 
-        for (int i = 0; i < hits.Length; i++) 
+        for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].transform.gameObject.tag.Equals("InfoBord")) 
+            if (hits[i].transform.gameObject.tag.Equals("InfoBord"))
             {
+                Debug.DrawLine(ray.origin, ray.origin + (ray.direction * 100), new Color(0, 1, 0), 1); ;
                 return hits[i].point + (ray.direction.normalized * -targetOverBordDistance);
             }
 
         }
-        return new Vector3(-1,-1,-1);
+        return new Vector3(-1, -1, -1);
     }
 
-    public GameObject getDropOff() 
+    public GameObject getDropOff()
     {
         if (cam == null) return null;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -161,9 +184,9 @@ public class BoardClick : MonoBehaviour
         return null;
     }
 
-    public bool checkCorrectness() 
+    public bool checkCorrectness()
     {
-        foreach (Pair architects in this.pairsDraggables) 
+        foreach (Pair architects in this.pairsDraggables)
         {
             GameObject off0 = architects.one.GetComponent<BoardItem>().getDropOff();
             GameObject off1 = architects.two.GetComponent<BoardItem>().getDropOff();
@@ -171,7 +194,7 @@ public class BoardClick : MonoBehaviour
 
             bool pairing = false;
 
-            foreach (Pair dropoff in this.pairsDropOff) 
+            foreach (Pair dropoff in this.pairsDropOff)
             {
                 if (dropoff.correctPair(off0, off1)) pairing = true;
             }
@@ -180,6 +203,11 @@ public class BoardClick : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void SceneTransition()
+    {
+        SceneManager.LoadScene("EndCard", LoadSceneMode.Single);
     }
 
 }
