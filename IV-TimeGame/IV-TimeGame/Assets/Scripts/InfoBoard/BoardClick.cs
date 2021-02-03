@@ -45,19 +45,7 @@ public class BoardClick : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.leftCtrlKey.wasPressedThisFrame)
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
+       
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {

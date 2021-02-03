@@ -39,7 +39,7 @@ public class TitleCardTextAnimation : MonoBehaviour
     private Vector3 buttonHide;
     private Vector3 buttonShow;
 
-    private void Awake()
+    private void Start()
     {
         audioFiles = new List<AudioClip>();
         this.textField.text = "";
