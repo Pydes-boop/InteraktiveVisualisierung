@@ -14,7 +14,7 @@ public class TitleCardTextAnimation : MonoBehaviour
 
     private string CurrentText = "";
 
-    public string pathToText = "Assets/TextMaterial/TitleCardText.txt";
+    public string pathToText = "TextMaterial\\TitleCardText";
 
     public Font textFont;
     public bool playClappingAfterEveryParagraph = false;
@@ -44,8 +44,16 @@ public class TitleCardTextAnimation : MonoBehaviour
         audioFiles = new List<AudioClip>();
         this.textField.text = "";
 
+        TextAsset joined = Resources.Load<TextAsset>(pathToText);
+        Debug.Log(joined == null);
+        lines = new List<string>(joined.text.Split('\n'));
+        /*
         this.lines = File.ReadLines(pathToText).ToList();
-
+        lines = new List<string>();
+        lines.Add("testline1");
+        lines.Add("testline2");
+        lines.Add("testline3");       
+        */
         this.buttonHide = nextLine.transform.position;
         this.buttonHide.y = 999999;
         this.buttonShow = nextLine.transform.position;
