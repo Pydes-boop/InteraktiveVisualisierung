@@ -10,7 +10,7 @@ public class BoardClick : MonoBehaviour
 
     GameObject lastClicked = null;
 
-    public float rayDistance = 100f;
+    public float rayDistance;
     public float targetOverBordDistance = 0.05f;
 
     private GameObject Player;
@@ -125,8 +125,9 @@ public class BoardClick : MonoBehaviour
         if (cam == null) return null;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100))
+        if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
+            Debug.DrawLine(ray.origin, hit.point, new Color(1, 0, 0), 1);
             return (hit.transform.gameObject.tag.Equals(Tag) ? hit.transform.gameObject : null);
         }
         else
@@ -140,13 +141,13 @@ public class BoardClick : MonoBehaviour
         if (cam == null) return new Vector3(-1, -1, -1);
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray, 100);
-
+        hits = Physics.RaycastAll(ray, rayDistance);
+        Debug.DrawLine(ray.origin, ray.origin + (ray.direction * rayDistance), new Color(0, 1, 0), 1);
         for (int i = 0; i < hits.Length; i++)
         {
             if (hits[i].transform.gameObject.tag.Equals("InfoBord"))
             {
-                Debug.DrawLine(ray.origin, ray.origin + (ray.direction * 100), new Color(0, 1, 0), 1); ;
+                
                 return hits[i].point + (ray.direction.normalized * -targetOverBordDistance);
             }
 
@@ -159,7 +160,7 @@ public class BoardClick : MonoBehaviour
         if (cam == null) return null;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray, 100);
+        hits = Physics.RaycastAll(ray, rayDistance);
 
         for (int i = 0; i < hits.Length; i++)
         {
